@@ -8,7 +8,7 @@ The HPO annotation format is a tab-separated value (TSV) file containing 13 colu
 
 ## File Structure
 
-- **File extension**: `.hpoa`
+- **File extension**: `.hpoa.tsv`
 - **Format**: Tab-separated values (TSV)
 - **Metadata**: Lines beginning with `#` contain metadata and comments
 - **Header**: Column names are specified in a header line
