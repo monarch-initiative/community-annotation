@@ -1,0 +1,9 @@
+DatabaseId	DB_Name	Qualifier	HPO_ID	HPO_Name	DB_Reference	Evidence	Onset	Frequency	Sex	Modifier	Aspect	BiocurationBy
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:0002321	Vertigo	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:0008629	Pulsatile tinnitus	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:0000360	Tinnitus	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:0010780	Hyperacusis	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:0000639	Nystagmus	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:0000405	Conductive hearing impairment	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:0008542	Low-frequency hearing loss	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
+MONDO:0018484	Semicircular Canal Dehiscence Syndrome		HP:6000032	Autophony	PMID:9525507;PMID:33522990	PCS					P	HPO:Claude[2025-01-10]
