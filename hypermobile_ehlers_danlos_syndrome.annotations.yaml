@@ -97,7 +97,7 @@ phenotypic_features:
     curation_date: "2025-01-11"
 
 diagnostic_methodology:
-  - method_name: "2017 hEDS Diagnostic Criteria Framework"
+  - method_name: "A framework for the classification of joint hypermobility and related conditions"
     method_id: "DOI:10.1002/ajmg.c.31539"
     method_type: "Diagnostic Criteria Framework"
     description: "Three-criteria framework for hypermobile Ehlers-Danlos syndrome diagnosis"
