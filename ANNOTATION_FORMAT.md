@@ -61,7 +61,7 @@ Each diagnostic methodology entry contains:
 #### Required Fields
 
 - **method_name**: Name of the diagnostic method/tool
-- **method_id**: Formal identifier (LOINC, SNOMED CT, DOI, etc.) - can be null initially
+- **method_id**: Formal identifier (LOINC, SNOMED CT, DOI, etc.) - only use when identifier can be validated to match method name
 - **method_type**: Type of method (Clinical Assessment Scale, Imaging Protocol, Laboratory Test, Diagnostic Criteria Framework, etc.)
 - **references**: List of supporting PMIDs
 - **supporting_text**: List of evidence objects (see below)

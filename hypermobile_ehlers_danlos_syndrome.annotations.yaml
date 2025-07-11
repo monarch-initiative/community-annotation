@@ -116,7 +116,7 @@ diagnostic_methodology:
     curation_date: "2025-01-11"
     
   - method_name: "Beighton Scale"
-    method_id: "LOINC:72133-2"
+    method_id: null
     method_type: "Clinical Assessment Scale"
     description: "Nine-point scale for assessing generalized joint hypermobility"
     target_domain: "Joint hypermobility assessment"

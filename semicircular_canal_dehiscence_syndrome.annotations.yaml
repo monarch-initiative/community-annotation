@@ -178,7 +178,7 @@ diagnostic_methodology:
     curation_date: "2025-01-11"
 
   - method_name: "Vestibular Evoked Myogenic Potentials (VEMP)"
-    method_id: "CPT:92519"
+    method_id: null
     method_type: "Physiological Assessment"
     description: "Enhanced VEMP responses indicating third mobile window pathophysiology - includes both cervical and ocular VEMP testing"
     supporting_text:
@@ -198,7 +198,7 @@ diagnostic_methodology:
     curation_date: "2025-01-11"
 
   - method_name: "Pure Tone Audiometry"
-    method_id: "LOINC:100652-7"
+    method_id: null
     method_type: "Audiological Assessment"
     description: "Assessment revealing low-frequency negative bone conduction thresholds and air-bone gaps characteristic of third mobile window effect"
     supporting_text:
@@ -256,7 +256,7 @@ diagnostic_methodology:
     curation_date: "2025-01-11"
 
   - method_name: "Tympanometry and Stapedial Reflex Testing"
-    method_id: "CPT:92550"
+    method_id: null
     method_type: "Audiological Assessment"
     description: "Assessment to exclude middle ear pathology and confirm third mobile window syndrome when air-bone gaps are present"
     supporting_text:
