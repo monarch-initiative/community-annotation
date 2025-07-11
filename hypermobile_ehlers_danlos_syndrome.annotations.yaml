@@ -96,38 +96,35 @@ phenotypic_features:
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-11"
 
-inheritance_pattern:
-  - inheritance_mode: "Unknown"
-    evidence_code: "PCS"
-    references: ["PMID:34219226"]
-    supporting_text:
-      - text: "Diagnosis of the commonest subtype, hypermobile Ehlers-Danlos Syndrome (hEDS), relies solely on a clinical diagnosis since its molecular aetiology remains unknown"
-        reference: "PMID:34219226"
-        page_section: "Abstract"
-    curator_notes: "The molecular genetic basis remains unknown, making inheritance pattern unclear"
-    curator: "ORCID:0000-0003-3311-7320"
-    curation_date: "2025-01-11"
-
-diagnostic_criteria:
-  - description: "2017 diagnostic criteria"
-    evidence_code: "PCS"
-    references: ["PMID:37774134"]
+diagnostic_methodology:
+  - method_name: "2017 hEDS Diagnostic Criteria Framework"
+    method_id: "DOI:10.1002/ajmg.c.31539"
+    method_type: "Diagnostic Criteria Framework"
+    description: "Three-criteria framework for hypermobile Ehlers-Danlos syndrome diagnosis"
+    target_domain: "Disease diagnosis"
+    components: ["Generalized Joint Hypermobility (Criterion 1)", "Systemic Features and Family History (Criterion 2)", "Exclusion Criteria (Criterion 3)"]
+    references: ["PMID:28306229", "PMID:31954224"]
     supporting_text:
       - text: "hEDS is diagnosed applying the 2017 diagnostic criteria, and patients with symptomatic joint hypermobility but not fulfilling these criteria are labeled as HSD"
         reference: "PMID:37774134"
         page_section: "Abstract"
-    curator_notes: "Current diagnosis relies on 2017 criteria, though some argue they are too stringent"
+      - text: "We therefore evaluated for hEDS in 91 POTS participants using the 2017 hEDS diagnostic checklist, which has three major criteria"
+        reference: "PMID:31954224"
+        page_section: "Methods"
+    curator_notes: "Official diagnostic framework from International EDS Consortium. All three criteria must be met simultaneously for hEDS diagnosis"
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-11"
-
-clinical_management:
-  - description: "Multisystemic involvement recognition"
-    evidence_code: "PCS"
-    references: ["PMID:37774134"]
+    
+  - method_name: "Beighton Scale"
+    method_id: "LOINC:72133-2"
+    method_type: "Clinical Assessment Scale"
+    description: "Nine-point scale for assessing generalized joint hypermobility"
+    target_domain: "Joint hypermobility assessment"
+    references: ["PMID:31954224"]
     supporting_text:
-      - text: "The 2017 criteria were introduced to improve diagnostic specificity but have faced criticism for being too stringent and failing to adequately capture the multisystemic involvement of hEDS"
-        reference: "PMID:37774134"
-        page_section: "Abstract"
-    curator_notes: "Recognition of multisystemic involvement is important for comprehensive care"
+      - text: "All three criteria must be simultaneously present to diagnose hEDS. Criterion 1 includes the Beighton Scale and five questions to assess joint hypermobility"
+        reference: "PMID:31954224"
+        page_section: "Methods"
+    curator_notes: "Standard tool for measuring generalized joint hypermobility in hEDS diagnosis. Part of Criterion 1 in 2017 framework"
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-11"
