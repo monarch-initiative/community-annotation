@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "community-annotation-validator"
+version = "0.1.0"
+description = "MCP server for validating disease annotations against source publications"
+authors = [
+    {name = "Claude", email = "claude@anthropic.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.0.0",
+    "pyyaml>=6.0.0",
+    "aurelian>=0.1.0",
+    "artl-mcp>=0.18.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+simple-aurelian-annotation-validator-mcp = "annotation_validator.simple_aurelian_mcp:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/annotation_validator"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]

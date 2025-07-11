@@ -1,0 +1,130 @@
+disease_id: "MONDO:0007523"
+disease_name: "Hypermobile Ehlers-Danlos syndrome"
+last_updated: "2025-01-11"
+
+phenotypic_features:
+  - hpo_id: "HP:0001382"
+    hpo_name: "Joint hypermobility"
+    evidence_code: "PCS"
+    references: ["PMID:28145611", "PMID:37774134", "PMID:31954224"]
+    frequency: "HP:0040280"
+    frequency_supporting_text:
+      - text: "All three criteria must be simultaneously present to diagnose hEDS. Criterion 1 includes the Beighton Scale and five questions to assess joint hypermobility"
+        reference: "PMID:31954224"
+        page_section: "Methods"
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+      - text: "The most common conditions with symptomatic joint hypermobility are hypermobile Ehlers-Danlos syndrome (hEDS) and hypermobility spectrum disorders (HSD)"
+        reference: "PMID:37774134"
+        page_section: "Abstract"
+    curator_notes: "Joint hypermobility is obligate for hEDS diagnosis per 2017 criteria - it is Criterion 1 and all three criteria must be present"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0001373"
+    hpo_name: "Joint dislocation"
+    evidence_code: "PCS"
+    references: ["PMID:28145611"]
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility, joint subluxations/dislocations"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Joint dislocations and subluxations are common manifestations"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0002829"
+    hpo_name: "Arthralgia"
+    evidence_code: "PCS"
+    references: ["PMID:28145611", "PMID:39850941", "PMID:31075184"]
+    frequency: "97%"
+    frequency_supporting_text:
+      - text: "83.1% reported chronic pain"
+        reference: "PMID:39850941"
+        page_section: "Results"
+      - text: "Ninety-seven percent of them had severe chronic pain"
+        reference: "PMID:31075184"
+        page_section: "Results"
+    supporting_text:
+      - text: "Many patients report activity-related pain and some go on to have daily pain"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Pain is a significant feature, often activity-related and can become chronic. Multiple studies show very high prevalence (83-97%)"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0000974"
+    hpo_name: "Hyperextensible skin"
+    evidence_code: "PCS"
+    references: ["PMID:28145611"]
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility, joint subluxations/dislocations, as well as skin and soft tissue manifestations"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Skin manifestations are part of the connective tissue disorder spectrum"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0000978"
+    hpo_name: "Bruising susceptibility"
+    evidence_code: "PCS"
+    references: ["PMID:28145611"]
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility, joint subluxations/dislocations, as well as skin and soft tissue manifestations"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Soft tissue manifestations include increased bruising susceptibility"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0012432"
+    hpo_name: "Chronic fatigue"
+    evidence_code: "PCS"
+    references: ["PMID:39850941"]
+    frequency: "44.1%"
+    frequency_supporting_text:
+      - text: "44.1% reported chronic fatigue"
+        reference: "PMID:39850941"
+        page_section: "Results"
+    supporting_text:
+      - text: "44.1% reported chronic fatigue"
+        reference: "PMID:39850941"
+        page_section: "Results"
+    curator_notes: "Chronic fatigue is a significant comorbidity in hEDS patients"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+diagnostic_methodology:
+  - method_name: "A framework for the classification of joint hypermobility and related conditions"
+    method_id: "DOI:10.1002/ajmg.c.31539"
+    method_type: "Diagnostic Criteria Framework"
+    description: "Three-criteria framework for hypermobile Ehlers-Danlos syndrome diagnosis"
+    target_domain: "Disease diagnosis"
+    components: ["Generalized Joint Hypermobility (Criterion 1)", "Systemic Features and Family History (Criterion 2)", "Exclusion Criteria (Criterion 3)"]
+    references: ["PMID:28306229", "PMID:31954224"]
+    supporting_text:
+      - text: "hEDS is diagnosed applying the 2017 diagnostic criteria, and patients with symptomatic joint hypermobility but not fulfilling these criteria are labeled as HSD"
+        reference: "PMID:37774134"
+        page_section: "Abstract"
+      - text: "We therefore evaluated for hEDS in 91 POTS participants using the 2017 hEDS diagnostic checklist, which has three major criteria"
+        reference: "PMID:31954224"
+        page_section: "Methods"
+    curator_notes: "Official diagnostic framework from International EDS Consortium. All three criteria must be met simultaneously for hEDS diagnosis"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+    
+  - method_name: "Beighton Scale"
+    method_id: null
+    method_type: "Clinical Assessment Scale"
+    description: "Nine-point scale for assessing generalized joint hypermobility"
+    target_domain: "Joint hypermobility assessment"
+    references: ["PMID:31954224"]
+    supporting_text:
+      - text: "All three criteria must be simultaneously present to diagnose hEDS. Criterion 1 includes the Beighton Scale and five questions to assess joint hypermobility"
+        reference: "PMID:31954224"
+        page_section: "Methods"
+    curator_notes: "Standard tool for measuring generalized joint hypermobility in hEDS diagnosis. Part of Criterion 1 in 2017 framework"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
