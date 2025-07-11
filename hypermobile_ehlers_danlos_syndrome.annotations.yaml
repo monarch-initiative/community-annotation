@@ -1,0 +1,103 @@
+disease_id: "MONDO:0007523"
+disease_name: "Hypermobile Ehlers-Danlos syndrome"
+last_updated: "2025-01-11"
+
+phenotypic_features:
+  - hpo_id: "HP:0001382"
+    hpo_name: "Joint hypermobility"
+    evidence_code: "PCS"
+    references: ["PMID:28145611", "PMID:37774134"]
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+      - text: "The most common conditions with symptomatic joint hypermobility are hypermobile Ehlers-Danlos syndrome (hEDS) and hypermobility spectrum disorders (HSD)"
+        reference: "PMID:37774134"
+        page_section: "Abstract"
+    curator_notes: "Joint hypermobility is a defining feature of hEDS"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0001373"
+    hpo_name: "Joint dislocation"
+    evidence_code: "PCS"
+    references: ["PMID:28145611"]
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility, joint subluxations/dislocations"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Joint dislocations and subluxations are common manifestations"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0002829"
+    hpo_name: "Arthralgia"
+    evidence_code: "PCS"
+    references: ["PMID:28145611"]
+    supporting_text:
+      - text: "Many patients report activity-related pain and some go on to have daily pain"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Pain is a significant feature, often activity-related and can become chronic"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0000974"
+    hpo_name: "Hyperextensible skin"
+    evidence_code: "PCS"
+    references: ["PMID:28145611"]
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility, joint subluxations/dislocations, as well as skin and soft tissue manifestations"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Skin manifestations are part of the connective tissue disorder spectrum"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0000978"
+    hpo_name: "Bruising susceptibility"
+    evidence_code: "PCS"
+    references: ["PMID:28145611"]
+    supporting_text:
+      - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility, joint subluxations/dislocations, as well as skin and soft tissue manifestations"
+        reference: "PMID:28145611"
+        page_section: "Abstract"
+    curator_notes: "Soft tissue manifestations include increased bruising susceptibility"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+inheritance_pattern:
+  - inheritance_mode: "Unknown"
+    evidence_code: "PCS"
+    references: ["PMID:34219226"]
+    supporting_text:
+      - text: "Diagnosis of the commonest subtype, hypermobile Ehlers-Danlos Syndrome (hEDS), relies solely on a clinical diagnosis since its molecular aetiology remains unknown"
+        reference: "PMID:34219226"
+        page_section: "Abstract"
+    curator_notes: "The molecular genetic basis remains unknown, making inheritance pattern unclear"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+diagnostic_criteria:
+  - description: "2017 diagnostic criteria"
+    evidence_code: "PCS"
+    references: ["PMID:37774134"]
+    supporting_text:
+      - text: "hEDS is diagnosed applying the 2017 diagnostic criteria, and patients with symptomatic joint hypermobility but not fulfilling these criteria are labeled as HSD"
+        reference: "PMID:37774134"
+        page_section: "Abstract"
+    curator_notes: "Current diagnosis relies on 2017 criteria, though some argue they are too stringent"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+clinical_management:
+  - description: "Multisystemic involvement recognition"
+    evidence_code: "PCS"
+    references: ["PMID:37774134"]
+    supporting_text:
+      - text: "The 2017 criteria were introduced to improve diagnostic specificity but have faced criticism for being too stringent and failing to adequately capture the multisystemic involvement of hEDS"
+        reference: "PMID:37774134"
+        page_section: "Abstract"
+    curator_notes: "Recognition of multisystemic involvement is important for comprehensive care"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
