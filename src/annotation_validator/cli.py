@@ -11,7 +11,7 @@ import yaml
 import asyncio
 import time
 import requests
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass
 import re
 import sys
@@ -32,6 +32,142 @@ class ValidationResult:
     error: Optional[str] = None
     context: Optional[str] = None
     suggestions: Optional[List[str]] = None
+
+
+@dataclass 
+class IdentifierValidationResult:
+    """Result of validating a method identifier."""
+    method_name: str
+    method_id: str
+    valid: bool
+    title_match: Optional[bool] = None
+    retrieved_title: Optional[str] = None
+    error: Optional[str] = None
+
+
+class IdentifierValidator:
+    """Validate method identifiers like DOI, LOINC, CPT codes."""
+    
+    def __init__(self):
+        self.cache = {}
+    
+    async def validate_doi(self, method_name: str, doi: str) -> IdentifierValidationResult:
+        """Validate a DOI and check if title matches method name."""
+        if doi in self.cache:
+            cached = self.cache[doi]
+            return IdentifierValidationResult(
+                method_name=method_name,
+                method_id=doi,
+                valid=cached['valid'],
+                title_match=self._check_title_match(method_name, cached.get('title')),
+                retrieved_title=cached.get('title'),
+                error=cached.get('error')
+            )
+        
+        try:
+            # Use CrossRef API to validate DOI
+            url = f"https://api.crossref.org/works/{doi}"
+            response = await asyncio.to_thread(requests.get, url, timeout=10)
+            
+            if response.status_code == 200:
+                data = response.json()
+                title = data['message']['title'][0] if data['message'].get('title') else None
+                
+                self.cache[doi] = {'valid': True, 'title': title}
+                
+                title_match = self._check_title_match(method_name, title)
+                
+                return IdentifierValidationResult(
+                    method_name=method_name,
+                    method_id=doi,
+                    valid=True,
+                    title_match=title_match,
+                    retrieved_title=title,
+                    error=None
+                )
+            else:
+                error_msg = f"DOI not found (HTTP {response.status_code})"
+                self.cache[doi] = {'valid': False, 'error': error_msg}
+                
+                return IdentifierValidationResult(
+                    method_name=method_name,
+                    method_id=doi,
+                    valid=False,
+                    title_match=None,
+                    retrieved_title=None,
+                    error=error_msg
+                )
+                
+        except Exception as e:
+            error_msg = f"Error validating DOI: {str(e)}"
+            self.cache[doi] = {'valid': False, 'error': error_msg}
+            
+            return IdentifierValidationResult(
+                method_name=method_name,
+                method_id=doi,
+                valid=False,
+                title_match=None,
+                retrieved_title=None,
+                error=error_msg
+            )
+    
+    def _check_title_match(self, method_name: str, retrieved_title: str) -> bool:
+        """Check if method name appears in or matches the retrieved title."""
+        if not retrieved_title:
+            return False
+        
+        # Normalize both strings for comparison
+        method_normalized = method_name.lower().strip()
+        title_normalized = retrieved_title.lower().strip()
+        
+        # Check for key terms from method name in title
+        method_words = set(re.findall(r'\b\w+\b', method_normalized))
+        title_words = set(re.findall(r'\b\w+\b', title_normalized))
+        
+        # Remove common stop words
+        stop_words = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'framework', 'criteria'}
+        method_words -= stop_words
+        title_words -= stop_words
+        
+        # Check if significant overlap exists
+        if len(method_words) == 0:
+            return False
+        
+        overlap = method_words.intersection(title_words)
+        overlap_ratio = len(overlap) / len(method_words)
+        
+        # Consider it a match if >50% of meaningful words overlap
+        return overlap_ratio > 0.5
+    
+    async def validate_identifier(self, method_name: str, method_id: str) -> IdentifierValidationResult:
+        """Validate any type of identifier based on its format."""
+        if not method_id or method_id.lower() == 'null':
+            return IdentifierValidationResult(
+                method_name=method_name,
+                method_id=method_id,
+                valid=True,  # null is valid (no identifier)
+                title_match=None,
+                retrieved_title=None,
+                error=None
+            )
+        
+        # Check if it's a DOI
+        if method_id.startswith('DOI:'):
+            doi = method_id[4:]  # Remove 'DOI:' prefix
+            return await self.validate_doi(method_name, doi)
+        elif method_id.startswith('10.'):
+            # Direct DOI without prefix
+            return await self.validate_doi(method_name, method_id)
+        else:
+            # For other identifier types (CPT, LOINC, etc.), we can't validate without APIs
+            return IdentifierValidationResult(
+                method_name=method_name,
+                method_id=method_id,
+                valid=True,  # Assume valid for now
+                title_match=None,
+                retrieved_title=None,
+                error="Identifier type not validated (no API available)"
+            )
 
 
 class PMIDFetcher:
@@ -257,7 +393,7 @@ def load_annotation_file(filepath: str) -> Dict[str, Any]:
         return yaml.safe_load(f)
 
 
-async def validate_annotation_file(filepath: str, similarity_threshold: float = 0.8) -> List[ValidationResult]:
+async def validate_annotation_file(filepath: str, similarity_threshold: float = 0.8) -> Tuple[List[ValidationResult], List[IdentifierValidationResult]]:
     """Validate all supporting text in an annotation file."""
     print(f"Loading annotation file: {filepath}")
     data = load_annotation_file(filepath)
@@ -268,7 +404,9 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
     
     fetcher = PMIDFetcher()
     validator = TextValidator(fetcher, disease_name, disease_id)
+    identifier_validator = IdentifierValidator()
     results = []
+    identifier_results = []
     
     # Process all annotation sections
     sections = ['phenotypic_features', 'inheritance', 'clinical_course', 'diagnostic_methodology']
@@ -288,6 +426,11 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
                 method_id = annotation.get('method_id', '')
                 identifier = f"{method_name} ({method_id})" if method_id else method_name
                 print(f"  Checking {identifier}")
+                
+                # Validate method identifier if present
+                if method_id and method_id != 'null':
+                    id_result = await identifier_validator.validate_identifier(method_name, method_id)
+                    identifier_results.append(id_result)
             else:
                 # Standard HPO-based annotations
                 hpo_id = annotation.get('hpo_id', '')
@@ -325,10 +468,10 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
                         result.hpo_name = annotation.get('hpo_name', '')
                         results.append(result)
     
-    return results
+    return results, identifier_results
 
 
-def print_validation_report(results: List[ValidationResult]):
+def print_validation_report(results: List[ValidationResult], identifier_results: List[IdentifierValidationResult] = None):
     """Print a validation report with actionable suggestions."""
     total = len(results)
     found = sum(1 for r in results if r.found)
@@ -399,6 +542,38 @@ def print_validation_report(results: List[ValidationResult]):
                 print(f"   Best alternative: {result.suggestions[0] if result.suggestions else 'No suggestions'}")
             print(f"   Action needed: {'Check PMID validity' if result.error else 'Update supporting text or find better quote'}")
     
+    # Print identifier validation results if present
+    if identifier_results:
+        print(f"\n{'='*80}")
+        print(f"IDENTIFIER VALIDATION REPORT")
+        print(f"{'='*80}")
+        
+        valid_ids = sum(1 for r in identifier_results if r.valid)
+        title_matches = sum(1 for r in identifier_results if r.title_match)
+        total_ids = len(identifier_results)
+        
+        print(f"Total identifiers checked: {total_ids}")
+        print(f"✓ Valid identifiers: {valid_ids}")
+        print(f"✗ Invalid identifiers: {total_ids - valid_ids}")
+        if title_matches > 0:
+            print(f"📋 Title matches: {title_matches}")
+        
+        for i, result in enumerate(identifier_results, 1):
+            status = "✓ VALID" if result.valid else "✗ INVALID"
+            match_status = ""
+            if result.title_match is not None:
+                match_status = " 📋 TITLE MATCH" if result.title_match else " ❌ TITLE MISMATCH"
+            
+            print(f"\n{i}. {status}{match_status}")
+            print(f"   Method: {result.method_name}")
+            print(f"   ID: {result.method_id}")
+            
+            if result.retrieved_title:
+                print(f"   Retrieved Title: {result.retrieved_title[:100]}{'...' if len(result.retrieved_title) > 100 else ''}")
+            
+            if result.error:
+                print(f"   ❌ Error: {result.error}")
+
     print(f"\n{'='*80}")
     print(f"NEXT STEPS")
     print(f"{'='*80}")
@@ -434,8 +609,8 @@ async def main():
     args = parser.parse_args()
     
     try:
-        results = await validate_annotation_file(args.annotation_file, args.threshold)
-        print_validation_report(results)
+        results, identifier_results = await validate_annotation_file(args.annotation_file, args.threshold)
+        print_validation_report(results, identifier_results)
         
         # Exit with error code if validation failed
         failed_count = sum(1 for r in results if not r.found)
