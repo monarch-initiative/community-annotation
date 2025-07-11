@@ -6,7 +6,12 @@ phenotypic_features:
   - hpo_id: "HP:0001382"
     hpo_name: "Joint hypermobility"
     evidence_code: "PCS"
-    references: ["PMID:28145611", "PMID:37774134"]
+    references: ["PMID:28145611", "PMID:37774134", "PMID:31954224"]
+    frequency: "HP:0040280"
+    frequency_supporting_text:
+      - text: "All three criteria must be simultaneously present to diagnose hEDS. Criterion 1 includes the Beighton Scale and five questions to assess joint hypermobility"
+        reference: "PMID:31954224"
+        page_section: "Methods"
     supporting_text:
       - text: "It has been described largely in those with musculoskeletal complaints including joint hypermobility"
         reference: "PMID:28145611"
@@ -14,7 +19,7 @@ phenotypic_features:
       - text: "The most common conditions with symptomatic joint hypermobility are hypermobile Ehlers-Danlos syndrome (hEDS) and hypermobility spectrum disorders (HSD)"
         reference: "PMID:37774134"
         page_section: "Abstract"
-    curator_notes: "Joint hypermobility is a defining feature of hEDS"
+    curator_notes: "Joint hypermobility is obligate for hEDS diagnosis per 2017 criteria - it is Criterion 1 and all three criteria must be present"
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-11"
 
@@ -33,12 +38,20 @@ phenotypic_features:
   - hpo_id: "HP:0002829"
     hpo_name: "Arthralgia"
     evidence_code: "PCS"
-    references: ["PMID:28145611"]
+    references: ["PMID:28145611", "PMID:39850941", "PMID:31075184"]
+    frequency: "97%"
+    frequency_supporting_text:
+      - text: "83.1% reported chronic pain"
+        reference: "PMID:39850941"
+        page_section: "Results"
+      - text: "Ninety-seven percent of them had severe chronic pain"
+        reference: "PMID:31075184"
+        page_section: "Results"
     supporting_text:
       - text: "Many patients report activity-related pain and some go on to have daily pain"
         reference: "PMID:28145611"
         page_section: "Abstract"
-    curator_notes: "Pain is a significant feature, often activity-related and can become chronic"
+    curator_notes: "Pain is a significant feature, often activity-related and can become chronic. Multiple studies show very high prevalence (83-97%)"
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-11"
 
@@ -63,6 +76,23 @@ phenotypic_features:
         reference: "PMID:28145611"
         page_section: "Abstract"
     curator_notes: "Soft tissue manifestations include increased bruising susceptibility"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - hpo_id: "HP:0012432"
+    hpo_name: "Chronic fatigue"
+    evidence_code: "PCS"
+    references: ["PMID:39850941"]
+    frequency: "44.1%"
+    frequency_supporting_text:
+      - text: "44.1% reported chronic fatigue"
+        reference: "PMID:39850941"
+        page_section: "Results"
+    supporting_text:
+      - text: "44.1% reported chronic fatigue"
+        reference: "PMID:39850941"
+        page_section: "Results"
+    curator_notes: "Chronic fatigue is a significant comorbidity in hEDS patients"
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-11"
 
