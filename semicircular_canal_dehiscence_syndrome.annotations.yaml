@@ -134,6 +134,20 @@ phenotypic_features:
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-10"
 
+  - hpo_id: "HP:0033630"
+    hpo_name: "Brain fog"
+    evidence_code: "PCS"
+    references: ["PMID:33522990"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "There are other symptoms reported by patients with SCDS that are less clearly associated with a 'third mobile window,' pathophysiology. These include aural fullness, cognitive effects such as 'brain fog,' chronic disequilibrium, and exacerbation of migraine symptoms, including headaches"
+        reference: "PMID:33522990"
+        page_section: "Clinical manifestations"
+    curator_notes: "Less clearly associated with third mobile window pathophysiology but may improve after surgery, though less frequently than primary symptoms"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
 clinical_course:
   - hpo_id: "HP:0003581"
     hpo_name: "Adult onset"
