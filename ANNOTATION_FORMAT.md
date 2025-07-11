@@ -29,11 +29,16 @@ Inheritance patterns and genetic transmission modes
 ### clinical_course
 Onset timing, progression, severity, and disease course information
 
+### diagnostic_methodology
+Diagnostic tools, assessment scales, and methodological frameworks used for disease diagnosis
+
 ## Annotation Object Structure
 
-Each annotation within a section contains:
+### Phenotypic Features, Inheritance, and Clinical Course Annotations
 
-### Required Fields
+Each annotation within these sections contains:
+
+#### Required Fields
 
 - **hpo_id**: HPO term identifier (e.g., "HP:0002321")
 - **hpo_name**: Human-readable HPO term name
@@ -43,10 +48,34 @@ Each annotation within a section contains:
 - **curator**: ORCID identifier of the curator
 - **curation_date**: Date of annotation in ISO format (YYYY-MM-DD)
 
-### Optional Fields
+#### Optional Fields
 
 - **frequency**: Prevalence data (preferred order: fractions > percentages > HPO frequency codes)
 - **frequency_supporting_text**: List of evidence objects supporting frequency claims
+- **curator_notes**: Additional context, caveats, or clarifications
+
+### Diagnostic Methodology Annotations
+
+Each diagnostic methodology entry contains:
+
+#### Required Fields
+
+- **method_name**: Name of the diagnostic method/tool
+- **method_id**: Formal identifier (LOINC, SNOMED CT, DOI, etc.) - can be null initially
+- **method_type**: Type of method (Clinical Assessment Scale, Imaging Protocol, Laboratory Test, Diagnostic Criteria Framework, etc.)
+- **references**: List of supporting PMIDs
+- **supporting_text**: List of evidence objects (see below)
+- **curator**: ORCID identifier of the curator
+- **curation_date**: Date of annotation in ISO format (YYYY-MM-DD)
+
+#### Optional Fields
+
+- **description**: Brief description of the method
+- **target_domain**: What aspect it diagnoses/measures
+- **components**: List of sub-components (for multi-part tools)
+- **sensitivity**: Performance metric if reported
+- **specificity**: Performance metric if reported
+- **validation_status**: Validated/Experimental/Historical
 - **curator_notes**: Additional context, caveats, or clarifications
 
 ## Supporting Text Object Structure
@@ -133,6 +162,36 @@ clinical_course:
     curator_notes: "Typical age of symptom onset"
     curator: "0000-0000-0000-0000"
     curation_date: "2025-01-10"
+
+diagnostic_methodology:
+  - method_name: "Beighton Scale"
+    method_id: "LOINC:72133-2"
+    method_type: "Clinical Assessment Scale"
+    description: "Nine-point scale for assessing generalized joint hypermobility"
+    target_domain: "Joint hypermobility assessment"
+    references: ["PMID:31954224"]
+    supporting_text:
+      - text: "Criterion 1 includes the Beighton Scale and five questions to assess joint hypermobility"
+        reference: "PMID:31954224"
+        page_section: "Methods"
+    curator_notes: "Standard tool for measuring generalized joint hypermobility in hEDS diagnosis"
+    curator: "0000-0000-0000-0000"
+    curation_date: "2025-01-11"
+    
+  - method_name: "2017 hEDS Diagnostic Checklist"
+    method_id: "DOI:10.1002/ajmg.c.31539"
+    method_type: "Diagnostic Criteria Framework"
+    description: "Three-criteria framework for hypermobile Ehlers-Danlos syndrome diagnosis"
+    target_domain: "Disease diagnosis"
+    components: ["Generalized Joint Hypermobility", "Systemic Features and Family History", "Exclusion Criteria"]
+    references: ["PMID:31954224", "PMID:28306229"]
+    supporting_text:
+      - text: "We therefore evaluated for hEDS in 91 POTS participants using the 2017 hEDS diagnostic checklist, which has three major criteria"
+        reference: "PMID:31954224"
+        page_section: "Methods"
+    curator_notes: "Official diagnostic framework from International EDS Consortium"
+    curator: "0000-0000-0000-0000"
+    curation_date: "2025-01-11"
 ```
 
 ## Benefits

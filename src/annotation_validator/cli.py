@@ -271,7 +271,7 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
     results = []
     
     # Process all annotation sections
-    sections = ['phenotypic_features', 'inheritance_pattern', 'clinical_management', 'diagnostic_criteria']
+    sections = ['phenotypic_features', 'inheritance', 'clinical_course', 'diagnostic_methodology']
     
     for section_name in sections:
         if section_name not in data:
@@ -281,11 +281,20 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
         section = data[section_name]
         
         for annotation in section:
-            hpo_id = annotation.get('hpo_id', '')
-            hpo_name = annotation.get('hpo_name', '')
-            
-            if hpo_id and hpo_name:
-                print(f"  Checking {hpo_id} ({hpo_name})")
+            # Handle different annotation types
+            if section_name == 'diagnostic_methodology':
+                # Diagnostic methodology has different fields
+                method_name = annotation.get('method_name', '')
+                method_id = annotation.get('method_id', '')
+                identifier = f"{method_name} ({method_id})" if method_id else method_name
+                print(f"  Checking {identifier}")
+            else:
+                # Standard HPO-based annotations
+                hpo_id = annotation.get('hpo_id', '')
+                hpo_name = annotation.get('hpo_name', '')
+                if hpo_id and hpo_name:
+                    print(f"  Checking {hpo_id} ({hpo_name})")
+                identifier = f"{hpo_id} ({hpo_name})" if hpo_id and hpo_name else "Unknown"
             
             # Validate main supporting text
             supporting_texts = annotation.get('supporting_text', [])
@@ -295,21 +304,26 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
                 
                 if text and reference:
                     result = await validator.validate_supporting_text(text, reference)
-                    result.hpo_id = hpo_id
-                    result.hpo_name = hpo_name
+                    if section_name == 'diagnostic_methodology':
+                        result.hpo_id = method_name
+                        result.hpo_name = annotation.get('method_type', '')
+                    else:
+                        result.hpo_id = annotation.get('hpo_id', '')
+                        result.hpo_name = annotation.get('hpo_name', '')
                     results.append(result)
             
-            # Validate frequency supporting text
-            freq_texts = annotation.get('frequency_supporting_text', [])
-            for support_entry in freq_texts:
-                text = support_entry.get('text', '')
-                reference = support_entry.get('reference', '')
-                
-                if text and reference:
-                    result = await validator.validate_supporting_text(text, reference)
-                    result.hpo_id = hpo_id
-                    result.hpo_name = hpo_name
-                    results.append(result)
+            # Validate frequency supporting text (only for non-diagnostic methodology sections)
+            if section_name != 'diagnostic_methodology':
+                freq_texts = annotation.get('frequency_supporting_text', [])
+                for support_entry in freq_texts:
+                    text = support_entry.get('text', '')
+                    reference = support_entry.get('reference', '')
+                    
+                    if text and reference:
+                        result = await validator.validate_supporting_text(text, reference)
+                        result.hpo_id = annotation.get('hpo_id', '')
+                        result.hpo_name = annotation.get('hpo_name', '')
+                        results.append(result)
     
     return results
 

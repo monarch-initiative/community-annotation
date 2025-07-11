@@ -15,6 +15,7 @@ dependencies = [
     "mcp>=1.0.0",
     "pyyaml>=6.0.0",
     "aurelian>=0.1.0",
+    "artl-mcp>=0.18.0",
 ]
 
 [project.optional-dependencies]
