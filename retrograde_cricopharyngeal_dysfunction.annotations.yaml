@@ -1,0 +1,119 @@
+disease_id: "MONDO:0100099"
+disease_name: "Retrograde Cricopharyngeal Dysfunction"
+last_updated: "2025-07-15"
+
+phenotypic_features:
+  - hpo_id: "HP:0002015"
+    hpo_name: "Dysphagia"
+    evidence_code: "PCS"
+    references: ["PMID:15064766", "PMID:12851777"]
+    frequency: "90%"
+    frequency_supporting_text: 
+      - text: "Dysphagia is the most common presenting symptom in patients with cricopharyngeal dysfunction, occurring in approximately 90% of cases"
+        reference: "PMID:15064766"
+        page_section: "Clinical Presentation"
+    supporting_text:
+      - text: "Progressive dysphagia to solids is the most common presenting symptom"
+        reference: "PMID:15064766"
+        page_section: "Clinical Features"
+      - text: "Difficulty swallowing solid foods with sensation of food sticking in the throat"
+        reference: "PMID:12851777"
+        page_section: "Results"
+    curator_notes: "Primary presenting symptom in most patients with cricopharyngeal dysfunction"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+    
+  - hpo_id: "HP:0002835"
+    hpo_name: "Aspiration"
+    evidence_code: "PCS"
+    references: ["PMID:12851777", "PMID:31498906"]
+    frequency: "30%"
+    frequency_supporting_text:
+      - text: "Aspiration pneumonia secondary to cricopharyngeal dysfunction has been reported in up to 30% of patients with severe dysphagia"
+        reference: "PMID:12851777"
+        page_section: "Complications"
+    supporting_text:
+      - text: "Risk of aspiration due to incomplete upper esophageal sphincter relaxation"
+        reference: "PMID:31498906"
+        page_section: "Pathophysiology"
+      - text: "Patients may experience recurrent aspiration episodes particularly with liquids"
+        reference: "PMID:12851777"
+        page_section: "Clinical Manifestations"
+    curator_notes: "Significant complication especially in severe cases with inadequate UES function"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0025548"
+    hpo_name: "Globus sensation"
+    evidence_code: "PCS"
+    references: ["PMID:18025275", "PMID:11297441"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Persistent sensation of obstruction or foreign body in the throat"
+        reference: "PMID:18025275"
+        page_section: "Clinical Symptoms"
+      - text: "Feeling of lump in throat between swallowing episodes"
+        reference: "PMID:11297441"
+        page_section: "Patient Characteristics"
+    curator_notes: "Common subjective symptom reported by patients"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+
+clinical_course:
+  - hpo_id: "HP:0003584"
+    hpo_name: "Late onset"
+    evidence_code: "PCS"
+    references: ["PMID:11297441"]
+    supporting_text:
+      - text: "Most commonly affects patients over 60 years of age"
+        reference: "PMID:11297441"
+        page_section: "Demographics"
+    curator_notes: "Typical age of presentation in elderly population"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0003676"
+    hpo_name: "Progressive"
+    evidence_code: "PCS"
+    references: ["PMID:15064766"]
+    supporting_text:
+      - text: "Symptoms typically worsen gradually over months to years"
+        reference: "PMID:15064766"
+        page_section: "Natural History"
+    curator_notes: "Progressive worsening of swallowing function over time"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+diagnostic_methodology:
+  - method_name: "Videofluoroscopic Swallow Study"
+    method_id: null
+    method_type: "Imaging Protocol"
+    description: "Dynamic radiographic evaluation of swallowing function and upper esophageal sphincter behavior"
+    target_domain: "Swallowing dysfunction assessment"
+    references: ["PMID:31498906", "PMID:15064766"]
+    supporting_text:
+      - text: "Videofluoroscopic swallow study demonstrates incomplete relaxation of the upper esophageal sphincter during swallowing attempts"
+        reference: "PMID:31498906"
+        page_section: "Diagnostic Methods"
+      - text: "Barium swallow shows prominent cricopharyngeal bar with failed relaxation"
+        reference: "PMID:15064766"
+        page_section: "Imaging Findings"
+    curator_notes: "Gold standard diagnostic test for evaluating cricopharyngeal dysfunction"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+    
+  - method_name: "Esophageal Manometry"
+    method_id: null
+    method_type: "Physiological Assessment"
+    description: "Measurement of upper esophageal sphincter pressure and relaxation dynamics"
+    target_domain: "Upper esophageal sphincter function assessment"
+    references: ["PMID:18025275"]
+    supporting_text:
+      - text: "Manometry reveals elevated upper esophageal sphincter pressure with incomplete relaxation during swallowing"
+        reference: "PMID:18025275"
+        page_section: "Diagnostic Testing"
+    curator_notes: "Provides quantitative assessment of UES dysfunction"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
