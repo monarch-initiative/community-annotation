@@ -1,0 +1,308 @@
+disease_id: "MONDO:0018484"
+disease_name: "Semicircular Canal Dehiscence Syndrome"
+last_updated: "2025-01-10"
+
+phenotypic_features:
+  - hpo_id: "HP:0002321"
+    hpo_name: "Vertigo"
+    evidence_code: "PCS"
+    references: ["PMID:9525507", "PMID:33522990", "PMID:25992092"]
+    frequency: "60/65"
+    frequency_supporting_text: 
+      - text: "Vestibular manifestations were present in 60 (92.3%) patients"
+        reference: "PMID:25992092"
+        page_section: "Results"
+    supporting_text:
+      - text: "Eight patients with vertigo, oscillopsia, and/or disequilibrium related to sound, changes in middle ear pressure, and/or changes in intracranial pressure"
+        reference: "PMID:9525507"
+        page_section: "Abstract"
+      - text: "Sound-induced vertigo and/or oscillopsia time-locked to the stimulus"
+        reference: "PMID:33522990"
+        page_section: "Diagnostic Criteria"
+      - text: "Pressure-induced vertigo and/or oscillopsia time-locked to the stimulus"
+        reference: "PMID:33522990"
+        page_section: "Diagnostic Criteria"
+      - text: "Most patients with SSCDS seek medical care for symptoms and vestibular nystagmus triggered by noise or pressure change (e.g., blowing nose, coughing, lifting heavy objects, and compression of the tragus)"
+        reference: "PMID:25992092"
+        page_section: "Clinical symptoms"
+    curator_notes: "Vertigo is the most common manifestation, present in >90% of patients, triggered by both sound and pressure stimuli"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+    
+  - hpo_id: "HP:0000639"
+    hpo_name: "Nystagmus"
+    evidence_code: "PCS"
+    references: ["PMID:9525507", "PMID:33522990", "PMID:25992092"]
+    frequency: "7/8"
+    frequency_supporting_text:
+      - text: "Seven of these patients also had vertical-torsional eye movements induced by these sound and/or pressure stimuli"
+        reference: "PMID:9525507"
+        page_section: "Abstract"
+    supporting_text:
+      - text: "The direction of the evoked eye movements could be explained by excitation or inhibition of the superior semicircular canal in the affected ear"
+        reference: "PMID:9525507"
+        page_section: "Abstract"
+      - text: "Eye movements in the plane of the affected superior semicircular canal when sound or pressure is applied to the affected ear"
+        reference: "PMID:33522990"
+        page_section: "Physiologic Tests"
+      - text: "Most patients with SSCDS seek medical care for symptoms and vestibular nystagmus triggered by noise or pressure change"
+        reference: "PMID:25992092"
+        page_section: "Clinical symptoms"
+    curator_notes: "Characteristic vertical-torsional pattern in the plane of the superior semicircular canal, triggered by sound/pressure"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+
+  - hpo_id: "HP:0008629"
+    hpo_name: "Pulsatile tinnitus"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:25992092"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Pulsatile tinnitus"
+        reference: "PMID:33522990"
+        page_section: "Diagnostic Criteria"
+      - text: "In the current case, the patient reported pulsatile tinnitus and fullness in the ear without vertigo symptoms"
+        reference: "PMID:25992092"
+        page_section: "Case Report"
+    curator_notes: "One of four key symptoms in Bárány Society consensus criteria"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+
+  - hpo_id: "HP:0010780"
+    hpo_name: "Hyperacusis"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:25992092"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Hyperacusis to bone conducted sound"
+        reference: "PMID:33522990"
+        page_section: "Diagnostic Criteria"
+      - text: "Sensorineural hearing loss and mild to moderate conductive hyperacusis (decreased bone conduction threshold within normal air conduction) are also observed"
+        reference: "PMID:25992092"
+        page_section: "Clinical findings"
+    curator_notes: "Bone conduction hyperacusis is a key diagnostic feature in consensus criteria"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+
+  - hpo_id: "HP:6000032"
+    hpo_name: "Autophony"
+    evidence_code: "PCS"
+    references: ["PMID:25992092"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "She had a history of 11 years of recurrent left ear fullness with autophonia and ipsilateral pulsatile tinnitus"
+        reference: "PMID:25992092"
+        page_section: "Case Report"
+      - text: "The patient may refer to hearing ipsilateral eye movements, their heartbeat, or popping of the joints during movement"
+        reference: "PMID:25992092"
+        page_section: "Clinical symptoms"
+    curator_notes: "Specific manifestation of bone conduction hyperacusis, includes voice and internal body sounds"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+
+  - hpo_id: "HP:0000405"
+    hpo_name: "Conductive hearing impairment"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:25992092"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Low-frequency negative bone conduction thresholds on pure tone audiometry"
+        reference: "PMID:33522990"
+        page_section: "Physiologic Tests"
+      - text: "There is usually an air-bone gap of 5 to 10 dB in two or more frequencies, although a larger gap may exist"
+        reference: "PMID:25992092"
+        page_section: "Clinical findings"
+    curator_notes: "Third window effect causes apparent conductive loss with characteristic negative bone conduction thresholds"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+
+  - hpo_id: "HP:0008542"
+    hpo_name: "Low-frequency hearing loss"
+    evidence_code: "PCS"
+    references: ["PMID:25992092"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Hearing loss that is conductive at low frequencies is the most common finding of SSCDS"
+        reference: "PMID:25992092"
+        page_section: "Clinical findings"
+    curator_notes: "Characteristic low-frequency pattern due to third window effect disrupting cochlear input impedance"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+
+  - hpo_id: "HP:0033630"
+    hpo_name: "Brain fog"
+    evidence_code: "PCS"
+    references: ["PMID:33522990"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "There are other symptoms reported by patients with SCDS that are less clearly associated with a 'third mobile window,' pathophysiology. These include aural fullness, cognitive effects such as 'brain fog,' chronic disequilibrium, and exacerbation of migraine symptoms, including headaches"
+        reference: "PMID:33522990"
+        page_section: "Clinical manifestations"
+    curator_notes: "Less clearly associated with third mobile window pathophysiology but may improve after surgery, though less frequently than primary symptoms"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+clinical_course:
+  - hpo_id: "HP:0003581"
+    hpo_name: "Adult onset"
+    evidence_code: "PCS"
+    references: ["PMID:25992092"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Median age of symptom onset is around 40 to 41 years"
+        reference: "PMID:25992092"
+        page_section: "Demographics"
+    curator_notes: "Symptoms typically manifest in middle adulthood around 4th-5th decade"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-10"
+
+diagnostic_methodology:
+  - method_name: "Bárány Society Diagnostic Criteria Framework"
+    method_type: "Diagnostic Criteria Framework"
+    description: "Comprehensive consensus criteria requiring symptoms, physiological tests, and imaging evidence of third mobile window pathophysiology"
+    supporting_text:
+      - text: "The diagnosis of SCDS therefore requires a combination of A) at least one symptom consistent with SCDS and attributable to 'third mobile window' pathophysiology including 1) hyperacusis to bone conducted sound, 2) sound-induced vertigo and/or oscillopsia time-locked to the stimulus, 3) pressure-induced vertigo and/or oscillopsia time-locked to the stimulus, or 4) pulsatile tinnitus; B) at least 1 physiologic test or sign indicating that a 'third mobile window' is transmitting pressure including 1) eye movements in the plane of the affected superior semicircular canal when sound or pressure is applied to the affected ear, 2) low-frequency negative bone conduction thresholds on pure tone audiometry, or 3) enhanced vestibular-evoked myogenic potential (VEMP) responses (low cervical VEMP thresholds or elevated ocular VEMP amplitudes); and C) high resolution computed tomography (CT) scan with multiplanar reconstruction in the plane of the superior semicircular canal consistent with a dehiscence"
+        reference: "PMID:33522990"
+        page_section: "Abstract"
+    evidence_code: "PCS"
+    references: ["PMID:33522990"]
+    curator_notes: "Requires all three components: symptoms, physiological tests, and imaging. Established by international consensus of the Bárány Society Classification Committee"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - method_name: "Vestibular Evoked Myogenic Potentials (VEMP)"
+    method_id: null
+    method_type: "Physiological Assessment"
+    description: "Enhanced VEMP responses indicating third mobile window pathophysiology - includes both cervical and ocular VEMP testing"
+    supporting_text:
+      - text: "Enhanced vestibular-evoked myogenic potential (VEMP) responses (low cervical VEMP thresholds or elevated ocular VEMP amplitudes)"
+        reference: "PMID:33522990"
+        page_section: "Physiologic Tests"
+      - text: "Cervical VEMP (cVEMP) thresholds are decreased on the affected side in patients with SCDS, while ocular VEMP (oVEMP) amplitudes are higher on the affected side in patients with SCDS"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "The sensitivity and specificity of cVEMP thresholds for SCDS is >80%, but depends on the parameters used"
+        reference: "PMID:33522990"
+        page_section: "Vestibular-evoked myogenic potentials"
+    evidence_code: "PCS"
+    references: ["PMID:33522990"]
+    curator_notes: "Both cervical and ocular VEMP subtypes are enhanced in SCDS. Sensitivity and specificity >80% for cVEMP. oVEMP may be more sensitive and specific than cVEMP"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - method_name: "Pure Tone Audiometry"
+    method_id: null
+    method_type: "Audiological Assessment"
+    description: "Assessment revealing low-frequency negative bone conduction thresholds and air-bone gaps characteristic of third mobile window effect"
+    supporting_text:
+      - text: "Low-frequency negative bone conduction thresholds on pure tone audiometry"
+        reference: "PMID:33522990"
+        page_section: "Physiologic Tests"
+      - text: "Pure tone threshold audiometry typically shows differences in air and bone conduction thresholds at low to middle frequencies (250 Hz, 500 Hz, 1000 Hz and sometimes 2000 Hz). The most common diagnostic abnormality for SCDS is the presence of one or more negative bone conduction (BC) thresholds"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "There is usually an air-bone gap of 5 to 10 dB in two or more frequencies, although a larger gap may exist"
+        reference: "PMID:25992092"
+        page_section: "Clinical findings"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:25992092"]
+    curator_notes: "Negative bone conduction thresholds are pathognomonic for SCDS. Air-bone gaps typically 5-10 dB at low frequencies. Must be interpreted with tympanometry and stapedial reflexes to exclude middle ear pathology"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - method_name: "High-Resolution Temporal Bone CT with Multiplanar Reconstruction"
+    method_type: "Imaging Protocol"
+    description: "High-resolution CT imaging with multiplanar reconstruction in the plane of the superior semicircular canal to demonstrate dehiscence"
+    supporting_text:
+      - text: "High resolution computed tomography (CT) scan with multiplanar reconstruction in the plane of the superior semicircular canal consistent with a dehiscence"
+        reference: "PMID:33522990"
+        page_section: "Physiologic Tests"
+      - text: "CT scans should preferably have a resolution near 0.2 mm or better. The images should be reconstructed in the plane of the superior semicircular canal as well as orthogonal to it, to demonstrate the dehiscence"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "The positive predictive value increased to a dehiscence of 50% using CT with 1.0-mm slices and images in the axial and coronal planes and to 93% using thin slices (0.5 mm) and reconstruction in the sagittal plane"
+        reference: "PMID:25992092"
+        page_section: "Discussion"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:25992092"]
+    curator_notes: "Thin-section CT with multiplanar reconstruction is gold standard for anatomical confirmation. Resolution should be 0.2 mm or better. Sagittal reconstruction improves positive predictive value to 93%"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - method_name: "Clinical Nystagmus Assessment"
+    method_type: "Clinical Assessment"
+    description: "Observation of characteristic eye movements in the plane of the superior semicircular canal evoked by sound or pressure stimuli"
+    supporting_text:
+      - text: "Eye movements in the plane of the affected superior semicircular canal when sound or pressure is applied to the affected ear"
+        reference: "PMID:33522990"
+        page_section: "Physiologic Tests"
+      - text: "Nystagmus is a clinical sign that can be ob-served using either video-oculography or Frenzel goggles in the clinic. Eye movements should be in the plane of the superior semicircular canal, time-locked with the stimulus"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "Seven of these patients also had vertical-torsional eye movements induced by these sound and/or pressure stimuli. The direction of the evoked eye movements could be explained by excitation or inhibition of the superior semicircular canal in the affected ear"
+        reference: "PMID:9525507"
+        page_section: "Abstract"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:9525507"]
+    curator_notes: "Characteristic vertical-torsional eye movements in plane of superior semicircular canal. Can be observed with video-oculography or Frenzel goggles. Time-locked to stimulus onset and duration"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - method_name: "Tympanometry and Stapedial Reflex Testing"
+    method_id: null
+    method_type: "Audiological Assessment"
+    description: "Assessment to exclude middle ear pathology and confirm third mobile window syndrome when air-bone gaps are present"
+    supporting_text:
+      - text: "Air-bone gaps caused by tympanic membrane or middle ear disease typically produce abnormalities of these immittance measures. Conversely, air-bone gaps with normal immittance measures could support a diagnosis of SCDS"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "When the stapes is fixed by otosclerosis or congenital fixation, the stapedial reflex is typically absent. Thus, the presence of air-bone gaps in a patient with normal stapedial reflex testing could also be supportive of a third-mobile window like SCDS"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "Patients generally have a preserved acoustic reflex upon tympanometry and respond to the vestibular evoked myogenic potential test"
+        reference: "PMID:25992092"
+        page_section: "Clinical findings"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:25992092"]
+    curator_notes: "Normal tympanometry and preserved stapedial reflexes help distinguish SCDS from middle ear pathology. Important for differential diagnosis when air-bone gaps are present"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - method_name: "Tullio Phenomenon Assessment"
+    method_type: "Clinical Assessment"
+    description: "Evaluation of sound-induced vertigo and nystagmus using controlled acoustic stimuli"
+    supporting_text:
+      - text: "An audiometer can be used to administer tones at different frequencies and intensities to each ear. The provocative intensities can be quite loud (e.g. 100 dB hearing level, HL), so the stimulus should be kept brief"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "Upon a stapedial reflex test with a testing frequency of 110 Hz and an intensity of 110 Db in the right ear (left ear probe), the patient had vertigo and nystagmus (Tullio phenomenon)"
+        reference: "PMID:25992092"
+        page_section: "Case Report"
+    evidence_code: "PCS"
+    references: ["PMID:33522990", "PMID:25992092"]
+    curator_notes: "Sound-induced vertigo and nystagmus can be elicited using audiometer tones. Typically requires loud stimuli (100+ dB HL). Stimuli should be brief to avoid discomfort"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
+
+  - method_name: "Valsalva Maneuver Testing"
+    method_type: "Clinical Assessment"
+    description: "Assessment of pressure-induced vertigo and nystagmus using controlled pressure stimuli"
+    supporting_text:
+      - text: "Positive and negative pressure can be delivered to the ear canal with a finger, or by asking the patient to perform nasal Valsalva (pinch the nose closed and blow to generate positive nasopharyngeal pressure) or glottic Valsalva (asking the patient to bear down as if lifting a heavy item) maneuvers"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+      - text: "Pressure-induced vertigo and/or oscillopsia can occur from performing Valsalva maneuvers (moderately forceful attempted exhalation against a closed airway, whether by nasal or glottic closure, as when coughing, straining, or sneezing)"
+        reference: "PMID:33522990"
+        page_section: "Notes"
+    evidence_code: "PCS"
+    references: ["PMID:33522990"]
+    curator_notes: "Both nasal and glottic Valsalva maneuvers can elicit symptoms. Pressure can also be applied directly to ear canal. Symptoms are time-locked to pressure application or release"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-11"
