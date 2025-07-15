@@ -29,10 +29,15 @@
 
 See [ANNOTATION_FORMAT.md](ANNOTATION_FORMAT.md) for detailed field requirements, frequency guidelines, and complete examples.
 
-### 5. Quality Control
+### 5. Quality Control & Iterative Refinement
 - Verify HPO term accuracy against official definitions
-- Validate all supporting text against source papers using the annotation validator
-- Ensure all phenotypes achieve >0.8 confidence scores in validation
+- **Initial validation**: Validate all supporting text against source papers using the annotation validator
+- **Iterative improvement**: For any annotations with <0.8 confidence scores:
+  - Review and refine supporting text quotes for accuracy
+  - Verify page sections and references
+  - Update text to match source material more precisely
+- **Re-validate**: Run validation again after updates to ensure all annotations achieve >0.8 confidence
+- **Repeat cycle**: Continue validation → refinement → re-validation until all supporting text achieves high confidence
 - Check YAML format consistency and required field completion
 
 ## Key Tools
@@ -153,10 +158,11 @@ When curating annotations:
 1. ✅ Use exact quotes from papers as supporting text
 2. ✅ Include page section information when possible
 3. ✅ Use ORCID with "ORCID:" prefix for curator field
-4. ✅ Validate all supporting text achieves >0.8 confidence
+4. ✅ **Iteratively validate** all supporting text achieves >0.8 confidence through validation cycles
 5. ✅ Ensure papers are relevant to the disease being annotated
 6. ✅ Use PCS evidence code for clinical studies
 7. ✅ Represent frequencies as fractions when possible
+8. ✅ **Refine and re-validate** annotations until all achieve high confidence scores
 
 ## Curation Guidelines
 
