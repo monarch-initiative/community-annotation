@@ -202,7 +202,8 @@ class ContentFetcher:
             return self.cache[url]
         
         try:
-            async with aiohttp.ClientSession() as session:
+            timeout = aiohttp.ClientTimeout(total=10)  # Set a 10-second timeout
+            async with aiohttp.ClientSession(timeout=timeout) as session:
                 async with session.get(url) as response:
                     if response.status == 200:
                         content = await response.text()
