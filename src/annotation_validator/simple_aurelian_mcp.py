@@ -468,7 +468,7 @@ Confidence Score: {confidence:.3f}"""
                         reference = support_entry.get("reference", "")
                         
                         if not text or not reference:
-                            continue
+                                continue
                         
                         # Determine content type and fetch
                         if reference.startswith("PMID:"):
