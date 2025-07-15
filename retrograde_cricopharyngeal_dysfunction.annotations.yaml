@@ -60,19 +60,6 @@ phenotypic_features:
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-07-15"
 
-  - hpo_id: "HP:0002020"
-    hpo_name: "Gastroesophageal reflux"
-    evidence_code: "PCS"
-    references: ["PMID:15064766"]
-    frequency: null
-    frequency_supporting_text: []
-    supporting_text:
-      - text: "Regurgitation of undigested food occurs in patients with severe upper esophageal sphincter dysfunction"
-        reference: "PMID:15064766"
-        page_section: "Clinical Features"
-    curator_notes: "May present as regurgitation in severe cases"
-    curator: "ORCID:0000-0003-3311-7320"
-    curation_date: "2025-07-15"
 
 clinical_course:
   - hpo_id: "HP:0003584"
