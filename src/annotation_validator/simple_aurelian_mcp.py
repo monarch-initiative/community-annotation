@@ -21,6 +21,7 @@ from mcp.types import (
 )
 
 from aurelian.utils.pubmed_utils import get_pmid_text
+import aiohttp
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -31,6 +32,29 @@ server = Server("simple-aurelian-annotation-validator")
 
 # Paper cache to avoid repeated fetches
 paper_cache = {}
+
+# URL cache for web resources
+url_cache = {}
+
+async def fetch_url_text(url: str) -> Optional[str]:
+    """Fetch web page content from URL."""
+    if url in url_cache:
+        return url_cache[url]
+    
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                if response.status == 200:
+                    text = await response.text()
+                    url_cache[url] = text
+                    logger.info(f"Successfully fetched {url} ({len(text)} characters)")
+                    return text
+                else:
+                    logger.warning(f"HTTP {response.status} for {url}")
+                    return None
+    except Exception as e:
+        logger.error(f"Error fetching {url}: {e}")
+        return None
 
 async def fetch_paper_text(pmid: str) -> Optional[str]:
     """Fetch paper text using aurelian's utilities."""
@@ -137,12 +161,12 @@ async def handle_list_tools() -> list[Tool]:
                         "type": "string",
                         "description": "The supporting text to validate"
                     },
-                    "pmid": {
+                    "reference": {
                         "type": "string", 
-                        "description": "PMID reference (e.g., 'PMID:12345678')"
+                        "description": "PMID reference (e.g., 'PMID:12345678') or URL"
                     }
                 },
-                "required": ["supporting_text", "pmid"]
+                "required": ["supporting_text", "reference"]
             }
         ),
         Tool(
@@ -202,6 +226,37 @@ async def handle_list_tools() -> list[Tool]:
                 },
                 "required": ["annotation_data"]
             }
+        ),
+        Tool(
+            name="validate_relevant_publications",
+            description="Validate the relevant_publications section of an annotation file",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "publications": {
+                        "type": "array",
+                        "description": "List of relevant publication entries",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "reference": {"type": "string"},
+                                "title": {"type": "string"},
+                                "supporting_text": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "text": {"type": "string"},
+                                            "reference": {"type": "string"}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": ["publications"]
+            }
         )
     ]
 
@@ -232,27 +287,41 @@ Preview:
     
     elif name == "validate_supporting_text":
         supporting_text = arguments["supporting_text"]
-        pmid = arguments["pmid"]
+        reference = arguments["reference"]
         
-        # Fetch paper
-        paper_text = await fetch_paper_text(pmid)
-        if not paper_text:
-            response = f"✗ Could not fetch paper {pmid}"
+        # Determine if this is a PMID or URL and fetch accordingly
+        if reference.startswith("PMID:"):
+            content = await fetch_paper_text(reference)
+            content_type = "paper"
+        elif reference.startswith("http"):
+            content = await fetch_url_text(reference)
+            content_type = "webpage"
+        else:
+            response = f"✗ Unsupported reference type: {reference}"
+            return [TextContent(type="text", text=response)]
+        
+        if not content:
+            response = f"✗ Could not fetch {content_type}: {reference}"
             return [TextContent(type="text", text=response)]
         
         # Find supporting text
-        found, confidence, context = find_supporting_text_in_paper(supporting_text, paper_text)
+        found, confidence, context = find_supporting_text_in_paper(supporting_text, content)
         
         # Format result
         status = "✓ FOUND" if found else "✗ NOT FOUND"
         confidence_icon = "🟢" if confidence > 0.8 else "🟡" if confidence > 0.5 else "🔴"
-        title = extract_title_from_text(paper_text)
+        
+        if content_type == "paper":
+            title = extract_title_from_text(content)
+        else:
+            # For URLs, extract title from HTML or use reference
+            title = reference
         
         response = f"""Validation Result: {status} {confidence_icon}
 
 Supporting Text: {supporting_text}
-Reference: {pmid}
-Paper: {title[:80]}{'...' if len(title) > 80 else ''}
+Reference: {reference}
+{content_type.title()}: {title[:80]}{'...' if len(title) > 80 else ''}
 
 Confidence Score: {confidence:.3f}"""
         
@@ -339,7 +408,7 @@ Confidence Score: {confidence:.3f}"""
         section_summaries = {}
         
         # Process all sections
-        sections = ['phenotypic_features', 'inheritance', 'clinical_course']
+        sections = ['phenotypic_features', 'inheritance', 'clinical_course', 'relevant_publications']
         
         for section_name in sections:
             if section_name not in annotation_data:
@@ -348,37 +417,80 @@ Confidence Score: {confidence:.3f}"""
             section = annotation_data[section_name]
             section_results = []
             
-            for annotation in section:
-                hpo_id = annotation.get("hpo_id", "")
-                hpo_name = annotation.get("hpo_name", "")
-                supporting_texts = annotation.get("supporting_text", [])
-                
-                if not supporting_texts:
-                    continue
-                
-                # Validate each supporting text
-                for support_entry in supporting_texts:
-                    text = support_entry.get("text", "")
-                    reference = support_entry.get("reference", "")
+            if section_name == "relevant_publications":
+                # Handle relevant_publications section differently
+                for pub in section:
+                    reference = pub.get("reference", "")
+                    title = pub.get("title", "")
+                    supporting_texts = pub.get("supporting_text", [])
                     
-                    if not text or not reference or not reference.startswith("PMID:"):
+                    for support_entry in supporting_texts:
+                        text = support_entry.get("text", "")
+                        ref = support_entry.get("reference", "")
+                        
+                        if not text or not ref:
+                            continue
+                        
+                        # Determine content type and fetch
+                        if ref.startswith("PMID:"):
+                            content = await fetch_paper_text(ref)
+                        elif ref.startswith("http"):
+                            content = await fetch_url_text(ref)
+                        else:
+                            continue
+                        
+                        if content:
+                            found, confidence, context = find_supporting_text_in_paper(text, content)
+                            result = {
+                                "hpo_id": reference,  # Use main reference as ID
+                                "hpo_name": title,    # Use publication title as name
+                                "text": text,
+                                "reference": ref,
+                                "found": found,
+                                "confidence": confidence,
+                                "section": section_name
+                            }
+                            section_results.append(result)
+                            all_results.append(result)
+            else:
+                # Handle HPO annotation sections
+                for annotation in section:
+                    hpo_id = annotation.get("hpo_id", "")
+                    hpo_name = annotation.get("hpo_name", "")
+                    supporting_texts = annotation.get("supporting_text", [])
+                    
+                    if not supporting_texts:
                         continue
                     
-                    # Fetch and validate
-                    paper_text = await fetch_paper_text(reference)
-                    if paper_text:
-                        found, confidence, context = find_supporting_text_in_paper(text, paper_text)
-                        result = {
-                            "hpo_id": hpo_id,
-                            "hpo_name": hpo_name,
-                            "text": text,
-                            "reference": reference,
-                            "found": found,
-                            "confidence": confidence,
-                            "section": section_name
-                        }
-                        section_results.append(result)
-                        all_results.append(result)
+                    # Validate each supporting text
+                    for support_entry in supporting_texts:
+                        text = support_entry.get("text", "")
+                        reference = support_entry.get("reference", "")
+                        
+                        if not text or not reference:
+                            continue
+                        
+                        # Determine content type and fetch
+                        if reference.startswith("PMID:"):
+                            content = await fetch_paper_text(reference)
+                        elif reference.startswith("http"):
+                            content = await fetch_url_text(reference)
+                        else:
+                            continue
+                        
+                        if content:
+                            found, confidence, context = find_supporting_text_in_paper(text, content)
+                            result = {
+                                "hpo_id": hpo_id,
+                                "hpo_name": hpo_name,
+                                "text": text,
+                                "reference": reference,
+                                "found": found,
+                                "confidence": confidence,
+                                "section": section_name
+                            }
+                            section_results.append(result)
+                            all_results.append(result)
             
             # Section summary
             if section_results:
@@ -422,42 +534,170 @@ Confidence Score: {confidence:.3f}"""
     elif name == "cache_papers_from_annotation":
         annotation_data = arguments["annotation_data"]
         
-        # Extract all unique PMIDs
-        pmids = set()
-        sections = ['phenotypic_features', 'inheritance', 'clinical_course']
+        # Extract all unique references (PMIDs and URLs)
+        references = set()
+        sections = ['phenotypic_features', 'inheritance', 'clinical_course', 'relevant_publications']
         
         for section_name in sections:
             if section_name not in annotation_data:
                 continue
             section = annotation_data[section_name]
             
-            for annotation in section:
-                supporting_texts = annotation.get("supporting_text", [])
-                for support_entry in supporting_texts:
-                    ref = support_entry.get("reference", "")
-                    if ref.startswith("PMID:"):
-                        pmids.add(ref)
+            if section_name == "relevant_publications":
+                # Handle relevant_publications section
+                for pub in section:
+                    supporting_texts = pub.get("supporting_text", [])
+                    for support_entry in supporting_texts:
+                        ref = support_entry.get("reference", "")
+                        if ref.startswith("PMID:") or ref.startswith("http"):
+                            references.add(ref)
+            else:
+                # Handle HPO annotation sections
+                for annotation in section:
+                    supporting_texts = annotation.get("supporting_text", [])
+                    for support_entry in supporting_texts:
+                        ref = support_entry.get("reference", "")
+                        if ref.startswith("PMID:") or ref.startswith("http"):
+                            references.add(ref)
         
-        # Cache all papers
+        # Cache all references
         success_count = 0
         results = []
         
-        for pmid in sorted(pmids):
-            paper_text = await fetch_paper_text(pmid)
-            if paper_text:
-                success_count += 1
-                title = extract_title_from_text(paper_text)[:60]
-                results.append(f"✓ {pmid}: {title}...")
-            else:
-                results.append(f"✗ {pmid}: Failed to fetch")
+        for ref in sorted(references):
+            if ref.startswith("PMID:"):
+                content = await fetch_paper_text(ref)
+                if content:
+                    success_count += 1
+                    title = extract_title_from_text(content)[:60]
+                    results.append(f"✓ {ref}: {title}...")
+                else:
+                    results.append(f"✗ {ref}: Failed to fetch")
+            elif ref.startswith("http"):
+                content = await fetch_url_text(ref)
+                if content:
+                    success_count += 1
+                    results.append(f"✓ {ref}: URL cached ({len(content)} chars)")
+                else:
+                    results.append(f"✗ {ref}: Failed to fetch")
         
-        response = f"""Caching Papers from Annotation
+        response = f"""Caching References from Annotation
 
-Found {len(pmids)} unique PMIDs
-Successfully cached: {success_count}/{len(pmids)}
+Found {len(references)} unique references
+Successfully cached: {success_count}/{len(references)}
 
 Results:
 """ + "\n".join(results)
+        
+        return [TextContent(type="text", text=response)]
+    
+    elif name == "validate_relevant_publications":
+        publications = arguments["publications"]
+        
+        results = []
+        all_validation_results = []
+        
+        for pub in publications:
+            reference = pub.get("reference", "")
+            title = pub.get("title", "")
+            supporting_texts = pub.get("supporting_text", [])
+            
+            pub_results = []
+            
+            for support_entry in supporting_texts:
+                text = support_entry.get("text", "")
+                ref = support_entry.get("reference", "")
+                
+                if not text or not ref:
+                    continue
+                
+                # Determine content type and fetch
+                if ref.startswith("PMID:"):
+                    content = await fetch_paper_text(ref)
+                    content_type = "paper"
+                elif ref.startswith("http"):
+                    content = await fetch_url_text(ref)
+                    content_type = "webpage"
+                else:
+                    pub_results.append({
+                        "text": text[:50] + "..." if len(text) > 50 else text,
+                        "reference": ref,
+                        "found": False,
+                        "confidence": 0.0,
+                        "error": f"Unsupported reference type: {ref}"
+                    })
+                    continue
+                
+                if not content:
+                    pub_results.append({
+                        "text": text[:50] + "..." if len(text) > 50 else text,
+                        "reference": ref,
+                        "found": False,
+                        "confidence": 0.0,
+                        "error": f"Could not fetch {content_type}"
+                    })
+                    continue
+                
+                # Validate
+                found, confidence, context = find_supporting_text_in_paper(text, content)
+                result = {
+                    "text": text[:50] + "..." if len(text) > 50 else text,
+                    "reference": ref,
+                    "found": found,
+                    "confidence": confidence,
+                    "context": context[:100] + "..." if len(context) > 100 else context,
+                    "content_type": content_type
+                }
+                pub_results.append(result)
+                all_validation_results.append(result)
+            
+            # Publication summary
+            pub_found = sum(1 for r in pub_results if r["found"])
+            pub_total = len(pub_results)
+            pub_avg_conf = sum(r["confidence"] for r in pub_results) / pub_total if pub_total > 0 else 0
+            
+            results.append({
+                "reference": reference,
+                "title": title[:60] + "..." if len(title) > 60 else title,
+                "found": pub_found,
+                "total": pub_total,
+                "avg_confidence": pub_avg_conf,
+                "details": pub_results
+            })
+        
+        # Overall summary
+        total_validations = len(all_validation_results)
+        total_found = sum(1 for r in all_validation_results if r["found"])
+        overall_avg_conf = sum(r["confidence"] for r in all_validation_results) / total_validations if total_validations > 0 else 0
+        high_confidence = sum(1 for r in all_validation_results if r["confidence"] > 0.8)
+        
+        response = f"""Relevant Publications Validation
+
+📊 Overall Summary:
+- Total publications: {len(publications)}
+- Total supporting texts: {total_validations}
+- Successfully validated: {total_found}/{total_validations} ({total_found/total_validations*100:.1f}%)
+- High confidence (>0.8): {high_confidence}/{total_validations} ({high_confidence/total_validations*100:.1f}%)
+- Average confidence: {overall_avg_conf:.3f}
+
+📋 Publication Details:"""
+        
+        for i, result in enumerate(results, 1):
+            response += f"\n\n{i}. {result['reference']}"
+            response += f"\n   Title: {result['title']}"
+            response += f"\n   Supporting texts: {result['found']}/{result['total']} validated ({result['found']/result['total']*100:.1f}%)"
+            response += f"\n   Average confidence: {result['avg_confidence']:.3f}"
+            
+            for j, detail in enumerate(result['details'], 1):
+                status = "✓" if detail["found"] else "✗"
+                conf_icon = "🟢" if detail["confidence"] > 0.8 else "🟡" if detail["confidence"] > 0.5 else "🔴"
+                response += f"\n     {j}. {status} {conf_icon} {detail['reference']} ({detail['content_type']})"
+                response += f"\n        Text: {detail['text']}"
+                response += f"\n        Confidence: {detail['confidence']:.3f}"
+                if detail.get("context"):
+                    response += f"\n        Context: {detail['context']}"
+                if detail.get("error"):
+                    response += f"\n        Error: {detail['error']}"
         
         return [TextContent(type="text", text=response)]
     

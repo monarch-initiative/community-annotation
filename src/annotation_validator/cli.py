@@ -11,6 +11,7 @@ import yaml
 import asyncio
 import time
 import requests
+import aiohttp
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass
 import re
@@ -170,13 +171,13 @@ class IdentifierValidator:
             )
 
 
-class PMIDFetcher:
-    """Fetch publication content using aurelian's pubmed utilities."""
+class ContentFetcher:
+    """Fetch publication content using aurelian's pubmed utilities and web content."""
     
     def __init__(self):
         self.cache = {}
     
-    async def fetch_content(self, pmid: str) -> Optional[str]:
+    async def fetch_pmid_content(self, pmid: str) -> Optional[str]:
         """Fetch paper content using aurelian's get_pmid_text."""
         if pmid in self.cache:
             return self.cache[pmid]
@@ -194,12 +195,41 @@ class PMIDFetcher:
         except Exception as e:
             print(f"Error fetching {pmid}: {e}")
             return None
+    
+    async def fetch_url_content(self, url: str) -> Optional[str]:
+        """Fetch web page content from URL."""
+        if url in self.cache:
+            return self.cache[url]
+        
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url) as response:
+                    if response.status == 200:
+                        content = await response.text()
+                        self.cache[url] = content
+                        return content
+                    else:
+                        print(f"Warning: HTTP {response.status} for {url}")
+                        return None
+        except Exception as e:
+            print(f"Error fetching {url}: {e}")
+            return None
+    
+    async def fetch_content(self, reference: str) -> Optional[str]:
+        """Fetch content based on reference type (PMID or URL)."""
+        if reference.startswith("PMID:"):
+            return await self.fetch_pmid_content(reference)
+        elif reference.startswith("http"):
+            return await self.fetch_url_content(reference)
+        else:
+            print(f"Warning: Unsupported reference type: {reference}")
+            return None
 
 
 class TextValidator:
     """Validate supporting text against publication content."""
     
-    def __init__(self, fetcher: PMIDFetcher, disease_name: str = "", disease_id: str = ""):
+    def __init__(self, fetcher: ContentFetcher, disease_name: str = "", disease_id: str = ""):
         self.fetcher = fetcher
         self.disease_name = disease_name
         self.disease_id = disease_id
@@ -359,18 +389,18 @@ class TextValidator:
     
     async def validate_supporting_text(self, text: str, reference: str) -> ValidationResult:
         """Validate a single supporting text entry."""
-        # For now, only handle PMID references
-        if not reference.startswith("PMID:"):
+        # Handle both PMID and URL references
+        if not (reference.startswith("PMID:") or reference.startswith("http")):
             return ValidationResult(
                 hpo_id="", hpo_name="", text=text, reference=reference,
-                found=False, error="Only PMID references supported"
+                found=False, error="Only PMID and URL references supported"
             )
         
         content = await self.fetcher.fetch_content(reference)
         if content is None:
             return ValidationResult(
                 hpo_id="", hpo_name="", text=text, reference=reference,
-                found=False, error="Could not fetch publication content"
+                found=False, error="Could not fetch content"
             )
         
         # Check disease relevance first
@@ -402,14 +432,14 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
     disease_id = data.get('disease_id', '')
     print(f"Disease: {disease_name} ({disease_id})")
     
-    fetcher = PMIDFetcher()
+    fetcher = ContentFetcher()
     validator = TextValidator(fetcher, disease_name, disease_id)
     identifier_validator = IdentifierValidator()
     results = []
     identifier_results = []
     
     # Process all annotation sections
-    sections = ['phenotypic_features', 'inheritance', 'clinical_course', 'diagnostic_methodology']
+    sections = ['phenotypic_features', 'inheritance', 'clinical_course', 'diagnostic_methodology', 'relevant_publications']
     
     for section_name in sections:
         if section_name not in data:
@@ -431,6 +461,12 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
                 if method_id and method_id != 'null':
                     id_result = await identifier_validator.validate_identifier(method_name, method_id)
                     identifier_results.append(id_result)
+            elif section_name == 'relevant_publications':
+                # Relevant publications section
+                reference = annotation.get('reference', '')
+                title = annotation.get('title', '')
+                identifier = f"{reference} ({title[:50]}...)" if title else reference
+                print(f"  Checking {identifier}")
             else:
                 # Standard HPO-based annotations
                 hpo_id = annotation.get('hpo_id', '')
@@ -450,13 +486,16 @@ async def validate_annotation_file(filepath: str, similarity_threshold: float = 
                     if section_name == 'diagnostic_methodology':
                         result.hpo_id = method_name
                         result.hpo_name = annotation.get('method_type', '')
+                    elif section_name == 'relevant_publications':
+                        result.hpo_id = annotation.get('reference', '')
+                        result.hpo_name = annotation.get('title', '')
                     else:
                         result.hpo_id = annotation.get('hpo_id', '')
                         result.hpo_name = annotation.get('hpo_name', '')
                     results.append(result)
             
-            # Validate frequency supporting text (only for non-diagnostic methodology sections)
-            if section_name != 'diagnostic_methodology':
+            # Validate frequency supporting text (only for HPO annotation sections)
+            if section_name not in ['diagnostic_methodology', 'relevant_publications']:
                 freq_texts = annotation.get('frequency_supporting_text', [])
                 for support_entry in freq_texts:
                     text = support_entry.get('text', '')

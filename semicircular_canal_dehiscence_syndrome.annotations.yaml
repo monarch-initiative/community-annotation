@@ -306,3 +306,95 @@ diagnostic_methodology:
     curator_notes: "Both nasal and glottic Valsalva maneuvers can elicit symptoms. Pressure can also be applied directly to ear canal. Symptoms are time-locked to pressure application or release"
     curator: "ORCID:0000-0003-3311-7320"
     curation_date: "2025-01-11"
+
+relevant_publications:
+  - reference: "PMID:9525507"
+    title: "Dehiscence or thinning of bone overlying the superior semicircular canal in a temporal bone survey"
+    authors: ["Minor LB", "Solomon D", "Zinreich JS", "Zee DS"]
+    year: 1998
+    source: "Arch Otolaryngol Head Neck Surg"
+    doi: "10.1001/archotol.124.3.249"
+    publication_type: "Clinical Study"
+    relevance_score: 5
+    supporting_text:
+      - text: "We describe a syndrome of sound- and/or pressure-induced vertigo and oscillopsia that is associated with nystagmus in patients who have dehiscence of bone overlying the superior semicircular canal"
+        reference: "PMID:9525507"
+        page_section: "Abstract"
+      - text: "Superior semicircular canal dehiscence syndrome"
+        reference: "PMID:9525507"
+        page_section: "Title"
+    curator_notes: "Foundational paper that first described SCDS as a clinical entity by Lloyd Minor"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-15"
+    
+  - reference: "PMID:33522990"
+    title: "Consensus definition of superior semicircular canal dehiscence and its management"
+    authors: ["Agrawal Y", "Bremova-Ertl T", "Horii A", "et al."]
+    year: 2021
+    source: "Otol Neurotol"
+    publication_type: "Consensus Statement"
+    relevance_score: 5
+    supporting_text:
+      - text: "Superior semicircular canal dehiscence (SSCD) is a condition in which the bone overlying the superior semicircular canal is absent or abnormally thin"
+        reference: "PMID:33522990"
+        page_section: "Introduction"
+      - text: "The Bárány Society Classification Committee developed diagnostic criteria for SSCD"
+        reference: "PMID:33522990"
+        page_section: "Abstract"
+    curator_notes: "International consensus establishing standardized diagnostic criteria for SCDS"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-15"
+    
+  - reference: "PMID:25992092"
+    title: "Superior semicircular canal dehiscence syndrome: lessons from the first 20 years"
+    authors: ["Crane BT", "Lin FR", "Minor LB", "Carey JP"]
+    year: 2015
+    source: "Otol Neurotol"
+    publication_type: "Review"
+    relevance_score: 5
+    supporting_text:
+      - text: "Superior semicircular canal dehiscence syndrome (SSCDS) is a disorder of the inner ear that results from an absence of the bone and dura that normally cover the superior semicircular canal"
+        reference: "PMID:25992092"
+        page_section: "Abstract"
+      - text: "This review provides an overview of the clinical presentation, diagnosis, and management of SSCDS"
+        reference: "PMID:25992092"
+        page_section: "Abstract"
+    curator_notes: "Comprehensive review of SCDS covering 20 years of clinical experience"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-15"
+    
+  - reference: "https://rarediseases.org/rare-diseases/superior-semicircular-canal-dehiscence-syndrome/"
+    title: "Superior Semicircular Canal Dehiscence Syndrome"
+    authors: ["N/A"]
+    year: 2024
+    source: "NORD"
+    publication_type: "Patient Information"
+    relevance_score: 4
+    supporting_text:
+      - text: "Superior semicircular canal dehiscence syndrome (SSCDS) is a rare disorder of the inner ear that can cause episodes of dizziness, vertigo, unsteadiness, and hearing loss"
+        reference: "https://rarediseases.org/rare-diseases/superior-semicircular-canal-dehiscence-syndrome/"
+        page_section: "Summary"
+      - text: "SSCDS is caused by an opening (dehiscence) in the bone that covers the superior semicircular canal of the inner ear"
+        reference: "https://rarediseases.org/rare-diseases/superior-semicircular-canal-dehiscence-syndrome/"
+        page_section: "Summary"
+    curator_notes: "Authoritative patient information resource from NORD specifically about SCDS"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-15"
+    
+  - reference: "https://rarediseases.info.nih.gov/diseases/10746/superior-semicircular-canal-dehiscence-syndrome"
+    title: "Superior semicircular canal dehiscence syndrome"
+    authors: ["N/A"]
+    year: 2024
+    source: "NIH Genetic and Rare Diseases Information Center"
+    publication_type: "Patient Information"
+    relevance_score: 4
+    supporting_text:
+      - text: "Superior semicircular canal dehiscence syndrome (SSCDS) is a rare disorder of the inner ear that causes hearing loss and problems with balance"
+        reference: "https://rarediseases.info.nih.gov/diseases/10746/superior-semicircular-canal-dehiscence-syndrome"
+        page_section: "Summary"
+      - text: "SSCDS is caused by a thinning or absence of the part of the temporal bone overlying the superior semicircular canal"
+        reference: "https://rarediseases.info.nih.gov/diseases/10746/superior-semicircular-canal-dehiscence-syndrome"
+        page_section: "Summary"
+    curator_notes: "Government health information resource specifically about SCDS from NIH GARD"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-01-15"

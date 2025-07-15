@@ -32,6 +32,9 @@ Onset timing, progression, severity, and disease course information
 ### diagnostic_methodology
 Diagnostic tools, assessment scales, and methodological frameworks used for disease diagnosis
 
+### relevant_publications
+Publications that are specifically relevant to the disease, validated through supporting text that demonstrates the paper's relevance to the specific disease entity
+
 ## Annotation Object Structure
 
 ### Phenotypic Features, Inheritance, and Clinical Course Annotations
@@ -78,14 +81,36 @@ Each diagnostic methodology entry contains:
 - **validation_status**: Validated/Experimental/Historical
 - **curator_notes**: Additional context, caveats, or clarifications
 
+### Relevant Publications Annotations
+
+Each relevant publication entry contains:
+
+#### Required Fields
+
+- **reference**: PubMed identifier (e.g., "PMID:12345678") or URL (e.g., "https://rarediseases.org/rare-diseases/disease-name/")
+- **title**: Publication or resource title
+- **authors**: List of authors (can be truncated with "et al.") - use "N/A" for organizational sources
+- **year**: Publication year
+- **source**: Journal name, organization, or website (e.g., "Arch Otolaryngol Head Neck Surg", "NORD", "NIH Genetic and Rare Diseases Information Center")
+- **supporting_text**: List of evidence objects demonstrating relevance to the disease (see below)
+- **curator**: ORCID identifier of the curator
+- **curation_date**: Date of annotation in ISO format (YYYY-MM-DD)
+
+#### Optional Fields
+
+- **doi**: Digital Object Identifier (for published articles)
+- **publication_type**: Type of publication (Case Report, Clinical Study, Review, Clinical Guideline, Patient Information, etc.)
+- **relevance_score**: Curator-assigned score (1-5) indicating strength of relevance
+- **curator_notes**: Additional context about the publication's relevance
+
 ## Supporting Text Object Structure
 
 Each supporting text entry contains:
 
 ```yaml
 - text: "Direct quote or paraphrased evidence"
-  reference: "PMID:XXXXXXX"
-  page_section: "Location in paper (e.g., Table 1, Results, Abstract)"
+  reference: "PMID:XXXXXXX or URL"
+  page_section: "Location in paper (e.g., Table 1, Results, Abstract) or web section"
 ```
 
 ## Frequency Guidelines
