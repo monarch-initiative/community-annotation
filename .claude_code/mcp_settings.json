@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "annotation-validator": {
+      "command": "uv",
+      "args": ["run", "simple-aurelian-annotation-validator-mcp"],
+      "cwd": "/Users/kschaper/Monarch/community-annotation",
+      "description": "Custom annotation validator using aurelian's pubmed utilities"
+    }
+  }
+}
