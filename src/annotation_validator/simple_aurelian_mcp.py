@@ -470,13 +470,13 @@ Confidence Score: {confidence:.3f}"""
                         if not text or not reference:
                                 continue
                         
-                        # Determine content type and fetch
-                        if reference.startswith("PMID:"):
-                            content = await fetch_paper_text(reference)
-                        elif reference.startswith("http"):
-                            content = await fetch_url_text(reference)
-                        else:
-                            continue
+                    # Determine content type and fetch
+                    if reference.startswith("PMID:"):
+                        content = await fetch_paper_text(reference)
+                    elif reference.startswith("http"):
+                        content = await fetch_url_text(reference)
+                    else:
+                        continue
                         
                         if content:
                             found, confidence, context = find_supporting_text_in_paper(text, content)
