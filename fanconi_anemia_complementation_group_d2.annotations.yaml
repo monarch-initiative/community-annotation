@@ -1,0 +1,258 @@
+disease_id: "MONDO:0009214"
+disease_name: "Fanconi anemia complementation group D2"
+last_updated: "2025-07-15"
+
+phenotypic_features:
+  - hpo_id: "HP:0001876"
+    hpo_name: "Pancytopenia"
+    evidence_code: "PCS"
+    references: ["PMID:38550724", "PMID:39562502"]
+    frequency: "79/100"
+    frequency_supporting_text:
+      - text: "The cumulative incidence of hematological impairment increased rapidly during childhood to reach 79% by age 13"
+        reference: "PMID:39562502"
+        page_section: "Results"
+    supporting_text:
+      - text: "Laboratory investigations revealed pancytopenia, aberrant liver function tests, and elevated inflammatory markers."
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "The hematological profile supported the patient's pancytopenia as the patient has decreased Red blood cell count, platelet count, and total WBC count"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+    curator_notes: "Pancytopenia is a defining hematological feature of FA-D2 affecting 79% of patients by age 13"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0001873"
+    hpo_name: "Thrombocytopenia"
+    evidence_code: "PCS"
+    references: ["PMID:38550724"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Individuals with FA commonly display symptoms including anemia, thrombocytopenia, leukopenia"
+        reference: "PMID:38550724"
+        page_section: "Discussion"
+    curator_notes: "Thrombocytopenia is a component of the pancytopenia commonly seen in FA-D2"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0001915"
+    hpo_name: "Aplastic anemia"
+    evidence_code: "PCS"
+    references: ["PMID:38550724", "PMID:39562502"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "It is the most common inherited form of aplastic anemia"
+        reference: "PMID:38550724"
+        page_section: "Discussion"
+      - text: "Fanconi anemia (FA) is a rare genetic disease and it is considered to be one of the most common gene-related causes of aplastic anemia and leukemia"
+        reference: "PMID:39562502"
+        page_section: "Introduction"
+    curator_notes: "FA-D2 is a major inherited cause of aplastic anemia"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0003974"
+    hpo_name: "Absent radius"
+    evidence_code: "PCS"
+    references: ["PMID:38550724", "PMID:36463940"]
+    frequency: "26/100"
+    frequency_supporting_text:
+      - text: "Finger (26 %) and skin (25 %) deformities were the most common malformations"
+        reference: "PMID:36463940"
+        page_section: "Results"
+    supporting_text:
+      - text: "The X-ray revealed bilateral radial hypoplasia"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "The most indicative but not the most sensitive limb examination reveals mesomelia, radial hypoplasia, and hypothenar eminence hypoplasia"
+        reference: "PMID:38550724"
+        page_section: "Discussion"
+    curator_notes: "Radial defects are part of the characteristic finger deformities affecting 26% of FA patients"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0009601"
+    hpo_name: "Aplasia/Hypoplasia of the thumb"
+    evidence_code: "PCS"
+    references: ["PMID:38550724"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Physical examinations showed mesomelia, low-set ears, multiple hyperpigmented macules, microcephaly, micropthalmos, and thumb hypoplasia in both hands"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "The most indicative but not the most sensitive limb examination reveals mesomelia, radial hypoplasia, and hypothenar eminence hypoplasia"
+        reference: "PMID:38550724"
+        page_section: "Discussion"
+    curator_notes: "Thumb hypoplasia is commonly associated with radial defects in FA-D2"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0004322"
+    hpo_name: "Short stature"
+    evidence_code: "PCS"
+    references: ["PMID:39562502", "PMID:38550724"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "The most frequent congenital malformations were short stature and skin and skeletal abnormalities"
+        reference: "PMID:39562502"
+        page_section: "Results"
+      - text: "Low birth weight, short pre- and postnatal height, and microcephaly are among the physical anomalies identified"
+        reference: "PMID:38550724"
+        page_section: "Discussion"
+    curator_notes: "Short stature is one of the most frequent congenital malformations in FA-D2"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0000252"
+    hpo_name: "Microcephaly"
+    evidence_code: "PCS"
+    references: ["PMID:38550724"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Physical examinations showed mesomelia, low-set ears, multiple hyperpigmented macules, microcephaly, micropthalmos, and thumb hypoplasia in both hands"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "Low birth weight, short pre- and postnatal height, and microcephaly are among the physical anomalies identified"
+        reference: "PMID:38550724"
+        page_section: "Discussion"
+    curator_notes: "Microcephaly is a common neurological finding in FA-D2 patients"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0000104"
+    hpo_name: "Renal agenesis"
+    evidence_code: "PCS"
+    references: ["PMID:38550724"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "A USG was performed, which revealed a right kidney with a dilated calyceal system and the absence of the left kidney in the left renal or iliac fossa. This is due to congenital agenesis of left kidney"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "Agenesis and horseshoe kidneys are examples of genitourinary system anomalies"
+        reference: "PMID:38550724"
+        page_section: "Discussion"
+    curator_notes: "Renal agenesis is part of the genitourinary anomalies that can occur in FA-D2"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0000957"
+    hpo_name: "Cafe-au-lait spot"
+    evidence_code: "PCS"
+    references: ["PMID:38550724", "PMID:36463940"]
+    frequency: "25/100"
+    frequency_supporting_text:
+      - text: "Finger (26 %) and skin (25 %) deformities were the most common malformations"
+        reference: "PMID:36463940"
+        page_section: "Results"
+    supporting_text:
+      - text: "Physical examinations showed mesomelia, low-set ears, multiple hyperpigmented macules, microcephaly, micropthalmos, and thumb hypoplasia in both hands"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "We can appreciate low-set ears and hyperpigmented patches of the color of coffee, which are not limited to ears and can spread to the back, chest, and abdomen of the patient"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+    curator_notes: "Hyperpigmented macules consistent with café-au-lait spots affect 25% of FA patients"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0040194"
+    hpo_name: "Increased chromosome breakage"
+    evidence_code: "PCS"
+    references: ["PMID:38550724", "PMID:39562502"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Chromosomal breakage test was performed using Mitomycin C in a peripheral lymphocyte culture"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "Chromosomal breakage test was performed using Mitomycin C in a peripheral lymphocyte culture"
+        reference: "PMID:38550724"
+        page_section: "Case presentation"
+      - text: "The cells of patients with FA exhibit spontaneous chromosome fragility, which increases after treatment with crosslinking agents"
+        reference: "PMID:39562502"
+        page_section: "Introduction"
+    curator_notes: "Chromosomal breakage with crosslinking agents is a universal diagnostic feature of FA-D2"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0002863"
+    hpo_name: "Myelodysplastic syndrome"
+    evidence_code: "PCS"
+    references: ["PMID:34118472", "PMID:39562502"]
+    frequency: "17/100"
+    frequency_supporting_text:
+      - text: "38 (17%) had leukemia or MDS"
+        reference: "PMID:39562502"
+        page_section: "Results"
+    supporting_text:
+      - text: "until he developed myelodysplastic syndrome (MDS) and then acute myeloid leukemia (AML)"
+        reference: "PMID:34118472"
+        page_section: "Case presentation"
+    curator_notes: "MDS is a serious complication affecting 17% of FA patients, often progressing to AML"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0001909"
+    hpo_name: "Leukemia"
+    evidence_code: "PCS"
+    references: ["PMID:34118472", "PMID:39562502"]
+    frequency: "17/100"
+    frequency_supporting_text:
+      - text: "38 (17%) had leukemia or MDS"
+        reference: "PMID:39562502"
+        page_section: "Results"
+    supporting_text:
+      - text: "until he developed myelodysplastic syndrome (MDS) and then acute myeloid leukemia (AML)"
+        reference: "PMID:34118472"
+        page_section: "Case presentation"
+      - text: "Fanconi anemia (FA) is a rare genetic disease and it is considered to be one of the most common gene-related causes of aplastic anemia and leukemia"
+        reference: "PMID:39562502"
+        page_section: "Introduction"
+    curator_notes: "Leukemia, particularly AML, affects 17% of FA patients and is a major cause of mortality"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+inheritance:
+  - hpo_id: "HP:0000007"
+    hpo_name: "Autosomal recessive inheritance"
+    evidence_code: "PCS"
+    references: ["PMID:38550724"]
+    supporting_text:
+      - text: "It is a genetically heterogenous autosomal recessive condition"
+        reference: "PMID:38550724"
+        page_section: "Introduction"
+    curator_notes: "FA-D2 follows autosomal recessive inheritance pattern like other FA complementation groups"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+clinical_course:
+  - hpo_id: "HP:0003623"
+    hpo_name: "Neonatal onset"
+    evidence_code: "PCS"
+    references: ["PMID:34118472"]
+    supporting_text:
+      - text: "The three patients were born with severe intrauterine growth restrictions and different degrees of congenital malformations"
+        reference: "PMID:34118472"
+        page_section: "Case presentation"
+    curator_notes: "Severe FA-D2 cases can present with congenital malformations from birth"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0003593"
+    hpo_name: "Infantile onset"
+    evidence_code: "PCS"
+    references: ["PMID:39562502"]
+    supporting_text:
+      - text: "The cumulative incidence of hematological impairment increased rapidly during childhood to reach 79% by age 13"
+        reference: "PMID:39562502"
+        page_section: "Results"
+    curator_notes: "Hematological manifestations typically develop during infancy and childhood"
+    curator: "ORCID:0009-0001-4998-8617"
+    curation_date: "2025-07-15"
