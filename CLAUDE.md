@@ -225,3 +225,6 @@ uv run ruff src/
 ## Curation Memories
 
 - Always fetch papers before trying to create or update annotations
+- Use biolink:PhenotypicFeature as the category in monarch API when searching for phenotypes, e.g https://api.monarchinitiative.org/v3/api/search?q=abdominal+bloating&category=biolink:PhenotypicFeature&limit=10
+- When extracting supporting text, more is better. Please capture at least a sentence, but an entire paragraph would be ok too.
+- If a supporting text entry can't be validated, it should be removed. If an association cannot be validated via any supporting text entry, it should be removed. 
