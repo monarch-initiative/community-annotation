@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:hpo.jax.org)",
+      "WebFetch(domain:monarchinitiative.org)",
+      "WebFetch(domain:api.monarchinitiative.org)",
+      "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
+      "Bash(uv run:*)",
+      "Bash(git add *)",
+      "Bash(git commit -m *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git status)",
+      "Bash(git checkout *)",
+      "Bash(git rm *)",
+      "Bash(git diff *)",
+      "Bash(git log)"      
+    ],
+    "deny": []
+  }
+}
