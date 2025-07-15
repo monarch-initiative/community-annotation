@@ -1,0 +1,193 @@
+disease_id: "MONDO:0011431"
+disease_name: "MASS Syndrome"
+last_updated: "2025-07-15"
+
+phenotypic_features:
+  - hpo_id: "HP:0001634"
+    hpo_name: "Mitral valve prolapse"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26875674"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "The remaining 17% would be classified as ectopia lentis syndrome (ELS), mitral valve prolapse syndrome or mitral valve, aorta, skeleton and skin (MASS) syndrome, or potential MFS in patients aged less than 20 years."
+        reference: "PMID:21564093"
+        page_section: "Results"
+      - text: "MASS syndrome [Mitral valve prolapse, Aortic enlargement, Skin and Skeletal findings (MIM 604308)]"
+        reference: "PMID:26875674"
+        page_section: "Background"
+    curator_notes: "Mitral valve prolapse is one of the four defining features of MASS syndrome (the 'M' in MASS)"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0002616"
+    hpo_name: "Aortic root aneurysm"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26919284"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "10% of MFS patients were reclassified as ELS or MASS in the absence of aortic dilatation; conversely, 5% were reclassified as MFS in the presence of aortic dilatation."
+        reference: "PMID:21564093"
+        page_section: "Results"
+      - text: "MASS syndrome [Mitral valve prolapse, Aortic enlargement, Skin and Skeletal findings (MIM 604308)]"
+        reference: "PMID:26875674"
+        page_section: "Background"
+    curator_notes: "Aortic enlargement in MASS syndrome is typically borderline and non-progressive, distinguishing it from Marfan syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0001166"
+    hpo_name: "Arachnodactyly"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:31053375"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "MASS syndrome [Mitral valve prolapse, Aortic enlargement, Skin and Skeletal findings (MIM 604308)]"
+        reference: "PMID:26875674"
+        page_section: "Background"
+      - text: "The R2726W FBN1 variant was first described in 1995, in a 13 year old patient with tall stature, pectus carinatum, scoliosis, arachnodactyly and pes planus, leading to major involvement of the skeletal system."
+        reference: "PMID:26875674"
+        page_section: "Discussion"
+    curator_notes: "Arachnodactyly is part of the skeletal findings that define MASS syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0000098"
+    hpo_name: "Tall stature"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26919284"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "MASS syndrome [Mitral valve prolapse, Aortic enlargement, Skin and Skeletal findings (MIM 604308)]"
+        reference: "PMID:26875674"
+        page_section: "Background"
+      - text: "Up to now, families with 16 individuals affected by this variant have been reported, showing variability in clinical manifestations: some individuals manifested tall stature, others skeletal abnormalities and others had no clinical signs."
+        reference: "PMID:26875674"
+        page_section: "Discussion"
+    curator_notes: "Tall stature is a common skeletal manifestation in MASS syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0000768"
+    hpo_name: "Pectus carinatum"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:31053375"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "MASS syndrome [Mitral valve prolapse, Aortic enlargement, Skin and Skeletal findings (MIM 604308)]"
+        reference: "PMID:26875674"
+        page_section: "Background"
+      - text: "The R2726W FBN1 variant was first described in 1995, in a 13 year old patient with tall stature, pectus carinatum, scoliosis, arachnodactyly and pes planus, leading to major involvement of the skeletal system."
+        reference: "PMID:26875674"
+        page_section: "Discussion"
+    curator_notes: "Pectus carinatum is one of the skeletal deformities observed in MASS syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0002650"
+    hpo_name: "Scoliosis"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26919284"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "MASS syndrome [Mitral valve prolapse, Aortic enlargement, Skin and Skeletal findings (MIM 604308)]"
+        reference: "PMID:26875674"
+        page_section: "Background"
+      - text: "The R2726W FBN1 variant was first described in 1995, in a 13 year old patient with tall stature, pectus carinatum, scoliosis, arachnodactyly and pes planus, leading to major involvement of the skeletal system."
+        reference: "PMID:26875674"
+        page_section: "Discussion"
+    curator_notes: "Scoliosis is part of the skeletal findings that characterize MASS syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0001083"
+    hpo_name: "Ectopia lentis"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26919284"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "The remaining 17% would be classified as ectopia lentis syndrome (ELS), mitral valve prolapse syndrome or mitral valve, aorta, skeleton and skin (MASS) syndrome, or potential MFS in patients aged less than 20 years."
+        reference: "PMID:21564093"
+        page_section: "Results"
+      - text: "Significant clinical overlap with other systemic connective tissue diseases, including Loeys-Dietz syndrome (LDS), Shprintzen-Goldberg syndrome (SGS), and the MASS phenotype, has been documented."
+        reference: "PMID:26919284"
+        page_section: "Abstract"
+    curator_notes: "Ectopia lentis is an ocular manifestation that can occur in MASS syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0001065"
+    hpo_name: "Striae distensae"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26919284"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "MASS syndrome [Mitral valve prolapse, Aortic enlargement, Skin and Skeletal findings (MIM 604308)]"
+        reference: "PMID:26875674"
+        page_section: "Background"
+      - text: "In 2008, a female with mitral valve prolapse, myopia and skin striae was reported."
+        reference: "PMID:26875674"
+        page_section: "Discussion"
+    curator_notes: "Striae distensae represents the skin findings component of MASS syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+  - hpo_id: "HP:0100775"
+    hpo_name: "Dural ectasia"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26919284"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Computed Tomography (CT) imaging found there was no evidence of dural ectasia or protusio acetabulae."
+        reference: "PMID:26875674"
+        page_section: "Case presentation"
+      - text: "Significant clinical overlap with other systemic connective tissue diseases, including Loeys-Dietz syndrome (LDS), Shprintzen-Goldberg syndrome (SGS), and the MASS phenotype, has been documented."
+        reference: "PMID:26919284"
+        page_section: "Abstract"
+    curator_notes: "Dural ectasia is a neurological manifestation that can occur in MASS syndrome"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+inheritance:
+  - hpo_id: "HP:0000006"
+    hpo_name: "Autosomal dominant inheritance"
+    evidence_code: "PCS"
+    references: ["PMID:26919284", "PMID:31053375"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Marfan syndrome (MFS) is a rare, autosomal-dominant, multisystem disorder, presenting with skeletal, ocular, skin, and cardiovascular symptoms."
+        reference: "PMID:26919284"
+        page_section: "Abstract"
+      - text: "The first described and most frequently reported condition associated with FBN1 mutations is MFS, an autosomal dominant inherited disorder of the connective tissue with a prevalence of 1 in 5,000 affected individuals."
+        reference: "PMID:26875674"
+        page_section: "Background"
+    curator_notes: "MASS syndrome is caused by mutations in FBN1 gene and follows autosomal dominant inheritance"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
+
+clinical_course:
+  - hpo_id: "HP:0003581"
+    hpo_name: "Adult onset"
+    evidence_code: "PCS"
+    references: ["PMID:21564093", "PMID:26919284"]
+    frequency: null
+    frequency_supporting_text: []
+    supporting_text:
+      - text: "Taking into account the median age at last follow-up (29 years), the possibility has to be considered that these patients would go on to develop classic MFS with time."
+        reference: "PMID:21564093"
+        page_section: "Results"
+      - text: "There is tremendous phenotypic variability in terms of age of presentation (particularly in terms of cardiac and ocular findings), tissues affected and severity of manifestations between and within families."
+        reference: "PMID:26875674"
+        page_section: "Background"
+    curator_notes: "MASS syndrome features typically become apparent in adulthood"
+    curator: "ORCID:0000-0003-3311-7320"
+    curation_date: "2025-07-15"
