@@ -1,3 +1,49 @@
+# Disease Curation Process for Monarch Disease Annotation Files
+
+**Objective**: Create a standardized `.annotations.yaml` file for a disease by extracting phenotypic features from primary literature and mapping them to Human Phenotype Ontology (HPO) terms with rich supporting evidence.
+
+## Step-by-Step Process
+
+### 1. Literature Search & Retrieval
+- Search PubMed for key publications related to the disease
+- Identify foundational papers, case reports, and clinical studies
+- Fetch and read full abstracts/papers to extract clinical features
+
+### 2. Phenotype Extraction
+- Extract all clinical manifestations, symptoms, and characteristics described in the literature
+- Note inheritance patterns, prevalence data, and onset information
+- Document the specific PMIDs supporting each phenotype
+
+### 3. HPO Term Mapping
+- Use the Monarch Initiative API (https://api.monarchinitiative.org/v3/api/search) to search for appropriate HPO terms
+- Verify HPO term definitions using the entity endpoint (https://api.monarchinitiative.org/v3/api/entity/HP:XXXXXX)
+- Map clinical features to the most specific HPO terms available
+- Use broader terms if specific ones don't exist
+
+### 4. Annotation File Creation
+- **Format**: Follow the complete specifications in [ANNOTATION_FORMAT.md](ANNOTATION_FORMAT.md)
+- Use MONDO ID for disease identifier  
+- Include supporting_text with exact quotes and page sections for each phenotype
+- Use "PCS" (Published Clinical Study) as evidence code
+- Track individual curator ORCID and curation dates for each annotation
+
+See [ANNOTATION_FORMAT.md](ANNOTATION_FORMAT.md) for detailed field requirements, frequency guidelines, and complete examples.
+
+### 5. Quality Control
+- Verify HPO term accuracy against official definitions
+- Validate all supporting text against source papers using the annotation validator
+- Ensure all phenotypes achieve >0.8 confidence scores in validation
+- Check YAML format consistency and required field completion
+
+## Key Tools
+- PubMed literature search
+- Monarch Initiative API
+- HPO browser
+- Community Annotation Validator (for text validation)
+- Primary literature review
+
+---
+
 # Community Annotation Validator
 
 An MCP server for validating disease annotations against source publications using aurelian's pubmed utilities.
@@ -23,36 +69,19 @@ pip install -e .
 
 ## Annotation Format
 
-We use YAML format for annotations with the following structure:
+We use YAML format for disease annotations. See [ANNOTATION_FORMAT.md](ANNOTATION_FORMAT.md) for complete specifications including:
 
-```yaml
-disease_id: "MONDO:0018484"
-disease_name: "Semicircular Canal Dehiscence Syndrome"
-last_updated: "2025-01-10"
+- File structure and top-level fields
+- Annotation sections (phenotypic_features, inheritance, clinical_course, diagnostic_methodology)
+- Required and optional fields for each annotation type
+- Supporting text object structure
+- Frequency guidelines and examples
+- Complete working examples
 
-phenotypic_features:
-  - hpo_id: "HP:0002321"
-    hpo_name: "Vertigo"
-    evidence_code: "PCS"
-    references: ["PMID:9525507", "PMID:33522990"]
-    frequency: "60/65"
-    frequency_supporting_text: 
-      - text: "Vestibular manifestations were present in 60 (92.3%) patients"
-        reference: "PMID:25992092"
-        page_section: "Results"
-    supporting_text:
-      - text: "Eight patients with vertigo, oscillopsia, and/or disequilibrium"
-        reference: "PMID:9525507"
-        page_section: "Abstract"
-    curator_notes: "Vertigo is the most common manifestation"
-    curator: "ORCID:0000-0003-3311-7320"
-    curation_date: "2025-01-10"
-```
-
-### Key Fields:
-- `supporting_text`: List of text evidence with references and page sections
+### Key Principles:
+- `supporting_text`: Direct quotes with precise references and page sections
 - `frequency_supporting_text`: Evidence for frequency claims
-- `curator`: ORCID ID with "ORCID:" prefix
+- `curator`: ORCID ID for individual annotation tracking
 - `evidence_code`: "PCS" for Published Clinical Study
 
 ## MCP Server Usage
