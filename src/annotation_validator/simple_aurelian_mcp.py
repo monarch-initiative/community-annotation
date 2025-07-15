@@ -42,7 +42,8 @@ async def fetch_url_text(url: str) -> Optional[str]:
         return url_cache[url]
     
     try:
-        async with aiohttp.ClientSession() as session:
+        timeout = ClientTimeout(total=10)  # Set a 10-second timeout
+        async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.get(url) as response:
                 if response.status == 200:
                     text = await response.text()
